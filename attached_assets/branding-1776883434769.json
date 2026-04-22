@@ -1,0 +1,187 @@
+{
+  "colorScheme": "light",
+  "fonts": [
+    {
+      "family": "New York",
+      "role": "heading"
+    },
+    {
+      "family": "Iowan Old Style",
+      "role": "body"
+    },
+    {
+      "family": "Apple Garamond",
+      "role": "body"
+    },
+    {
+      "family": "Baskerville",
+      "role": "body"
+    },
+    {
+      "family": "Source Serif Pro",
+      "role": "body"
+    }
+  ],
+  "colors": {
+    "primary": "#7D1528",
+    "secondary": "#1990C6",
+    "accent": "#7D1528",
+    "background": "#FFFFFD",
+    "textPrimary": "#121212",
+    "link": "#075E54"
+  },
+  "typography": {
+    "fontFamilies": {
+      "primary": "Iowan Old Style",
+      "heading": "New York"
+    },
+    "fontStacks": {
+      "heading": [
+        "New York",
+        "Iowan Old Style",
+        "Apple Garamond",
+        "Baskerville",
+        "Times New Roman",
+        "Droid Serif",
+        "Times",
+        "Source Serif Pro",
+        "serif",
+        "Apple Color Emoji",
+        "Segoe UI Emoji",
+        "Segoe UI Symbol"
+      ],
+      "body": [
+        "New York",
+        "Iowan Old Style",
+        "Apple Garamond",
+        "Baskerville",
+        "Times New Roman",
+        "Droid Serif",
+        "Times",
+        "Source Serif Pro",
+        "serif",
+        "Apple Color Emoji",
+        "Segoe UI Emoji",
+        "Segoe UI Symbol"
+      ],
+      "paragraph": [
+        "New York",
+        "Iowan Old Style",
+        "Apple Garamond",
+        "Baskerville",
+        "Times New Roman",
+        "Droid Serif",
+        "Times",
+        "Source Serif Pro",
+        "serif",
+        "Apple Color Emoji",
+        "Segoe UI Emoji",
+        "Segoe UI Symbol"
+      ]
+    },
+    "fontSizes": {
+      "h1": "40px",
+      "h2": "24px",
+      "body": "13px"
+    }
+  },
+  "spacing": {
+    "baseUnit": 10,
+    "borderRadius": "0px"
+  },
+  "components": {
+    "input": {
+      "background": "#FFFFFD",
+      "textColor": "#000000",
+      "borderColor": null,
+      "borderRadius": "0px",
+      "borderRadiusCorners": {
+        "topLeft": "0px",
+        "topRight": "0px",
+        "bottomRight": "0px",
+        "bottomLeft": "0px"
+      },
+      "shadow": "none"
+    },
+    "buttonPrimary": {
+      "background": "#7D1528",
+      "textColor": "#FFFFFF",
+      "borderRadius": "0px",
+      "borderRadiusCorners": {
+        "topLeft": "0px",
+        "topRight": "0px",
+        "bottomRight": "0px",
+        "bottomLeft": "0px"
+      },
+      "shadow": "none"
+    },
+    "buttonSecondary": {
+      "background": "#FFFFFD",
+      "textColor": "#000000",
+      "borderRadius": "0px",
+      "borderRadiusCorners": {
+        "topLeft": "0px",
+        "topRight": "0px",
+        "bottomRight": "0px",
+        "bottomLeft": "0px"
+      },
+      "shadow": "none"
+    }
+  },
+  "images": {
+    "logo": "File saved at: attached_assets/logo.png",
+    "favicon": null,
+    "ogImage": null,
+    "logoHref": "File saved at: attached_assets/logoHref.html",
+    "logoAlt": "OhMyDress"
+  },
+  "__llm_logo_reasoning": {
+    "selectedIndex": 0,
+    "reasoning": "Selected #0 because it is visible, located in the header, and matches the brand name 'OhMyDress'.",
+    "confidence": 0.9,
+    "source": "llm"
+  },
+  "__llm_button_reasoning": {
+    "primary": {
+      "index": 6,
+      "text": "✧ DISCOVER THE NEW RELEASES ✧\n              \n                \n                      ✦ SPRING SALE ✦",
+      "reasoning": "Button #6 has a vibrant brand color (#7D1528) and action-oriented text 'DISCOVER THE NEW RELEASES', making it the primary CTA."
+    },
+    "secondary": {
+      "index": 2,
+      "text": "View cart",
+      "reasoning": "Button #2 has a different background color (#FFFFFD) and serves a secondary action 'View cart', making it suitable as the secondary button."
+    },
+    "confidence": 0.95
+  },
+  "personality": {
+    "tone": "modern",
+    "energy": "medium",
+    "targetAudience": "fashion-conscious individuals"
+  },
+  "designSystem": {
+    "framework": "custom",
+    "componentLibrary": ""
+  },
+  "confidence": {
+    "buttons": 0.95,
+    "colors": 0.9,
+    "overall": 0.925
+  },
+  "__llm_metadata": {
+    "logoSelection": {
+      "llmCalled": true,
+      "llmSucceeded": true,
+      "finalSource": "llm",
+      "rawLogoSelection": {
+        "selectedLogoIndex": 0,
+        "selectedLogoReasoning": "Selected #0 because it is visible, located in the header, and matches the brand name 'OhMyDress'.",
+        "confidence": 0.9
+      }
+    },
+    "buttonClassification": {
+      "llmCalled": true,
+      "llmSucceeded": true
+    }
+  }
+}
