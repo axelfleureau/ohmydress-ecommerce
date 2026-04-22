@@ -8,7 +8,7 @@ import { useGSAP } from "@gsap/react";
 
 gsap.registerPlugin(SplitText);
 
-let isInitialLoad = true;
+let isInitialLoad = false;
 
 const Preloader = () => {
   const [showPreloader, setShowPreloader] = useState(isInitialLoad);

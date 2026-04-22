@@ -17,16 +17,20 @@
 }
 
 .hero .hero-img {
-  will-change: opacity;
+  will-change: opacity, transform;
   width: 100%;
-  height: 100%;
+  height: 65svh;
   position: absolute;
   top: 35svh;
   left: 0;
 }
 
 .hero .hero-img img {
-  object-fit: contain;
+  object-fit: cover;
+  object-position: center top;
+  width: 100%;
+  height: 100%;
+  display: block;
 }
 
 .about {
@@ -158,6 +162,12 @@
 @media (max-width: 1000px) {
   .hero .hero-header {
     width: calc(100% - 3rem);
+    top: 14svh;
+  }
+
+  .hero .hero-img {
+    height: 60svh;
+    top: 32svh;
   }
 
   .about .about-copy {
@@ -167,6 +177,25 @@
   .about .about-copy .about-icon {
     width: auto;
     height: 10rem;
+  }
+
+  .about {
+    padding: 5rem 0;
+  }
+
+  .featured-products {
+    padding: 4rem 0;
+  }
+}
+
+@media (max-width: 600px) {
+  .hero .hero-header {
+    top: 12svh;
+  }
+
+  .hero .hero-img {
+    height: 55svh;
+    top: 38svh;
   }
 }
 

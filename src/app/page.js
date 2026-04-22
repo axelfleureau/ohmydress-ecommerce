@@ -41,13 +41,17 @@ export default function Index() {
   useGSAP(() => {
     if (!heroImgRef.current || !heroHeaderRef.current) return;
 
-    gsap.set(heroImgRef.current, { y: 1000 });
-    gsap.to(heroImgRef.current, {
-      y: 0,
-      duration: 0.75,
-      ease: "power3.out",
-      delay: isInitialLoad ? 5.75 : 1,
-    });
+    gsap.fromTo(
+      heroImgRef.current,
+      { y: 200, opacity: 0 },
+      {
+        y: 0,
+        opacity: 1,
+        duration: 1,
+        ease: "power3.out",
+        delay: isInitialLoad ? 5.75 : 0.4,
+      }
+    );
 
     gsap.to(heroHeaderRef.current, {
       y: 150,
