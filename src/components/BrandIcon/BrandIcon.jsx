@@ -18,4 +18,4 @@ const BrandIcon = ({ fill = "#0d0d0d", width = 600, height = 220 }) => {
   );
 };
 
-export default BrandIcon;
+export default BrandIcon; 
