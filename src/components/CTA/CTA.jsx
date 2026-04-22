@@ -60,13 +60,16 @@ const CTA = () => {
       <div className="container">
         <div className="cta-col">
           <div className="cta-side-img">
-            <img src="/cta/cta_img_01.jpg" alt="" />
+            <img
+              src="https://ohmydress.store/cdn/shop/files/IMG_2715.jpg?v=1765380874&width=900"
+              alt=""
+            />
           </div>
           <div className="cta-col-copy">
             <Copy>
               <p className="bodyCopy sm">
-                Built to exist outside context, these forms prioritize
-                neutrality, and distortion.
+                Each drop is limited and unique — designed for those who choose
+                to stand out, not blend in.
               </p>
             </Copy>
           </div>
@@ -74,16 +77,22 @@ const CTA = () => {
         <div className="cta-col">
           <div className="cta-header">
             <Copy>
-              <h3>A field test in silhouettes</h3>
+              <h3>Discover the new releases</h3>
             </Copy>
           </div>
           <div className="cta-main-img">
-            <img src="/cta/cta_img_02.jpg" alt="" />
+            <img
+              src="https://ohmydress.store/cdn/shop/files/IMG_2827.jpg?v=1765537119&width=1200"
+              alt=""
+            />
           </div>
         </div>
         <div className="cta-col">
           <div className="cta-side-img">
-            <img src="/cta/cta_img_03.jpg" alt="" />
+            <img
+              src="https://ohmydress.store/cdn/shop/files/IMG_1623.jpg?v=1764369017&width=900"
+              alt=""
+            />
           </div>
         </div>
       </div>
@@ -91,7 +100,7 @@ const CTA = () => {
         <div className="cta-main-copy">
           <div className="btn">
             <Copy type="flicker">
-              <Link href="/wardrobe">Enter Wardrobe</Link>
+              <Link href="/wardrobe">Shop the collection</Link>
             </Copy>
           </div>
         </div>

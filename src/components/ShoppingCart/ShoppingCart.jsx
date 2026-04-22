@@ -30,7 +30,7 @@ const ShoppingCart = () => {
   return (
     <div className="shopping-cart-container">
       <button className="cart-button" onClick={toggleCart}>
-        <span className="cart-icon">BAG</span>
+        <span className="cart-icon">Bag</span>
         {cartCount > 0 && <span className="cart-count">{cartCount}</span>}
       </button>
 
@@ -72,16 +72,20 @@ const ShoppingCart = () => {
               </div>
             ) : (
               cartItems.map((item, index) => {
+                const matchingProduct = products.find(
+                  (p) => p.name === item.name
+                );
                 const productIndex =
                   products.findIndex((p) => p.name === item.name) + 1;
+                const imgSrc =
+                  item.image ||
+                  matchingProduct?.image ||
+                  `/products/product_${productIndex}.png`;
                 const quantity = Number(item.quantity) || 1;
                 return (
                   <div key={`${item.name}-${index}`} className="cart-item">
                     <div className="cart-item-image">
-                      <img
-                        src={`/products/product_${productIndex}.png`}
-                        alt={item.name}
-                      />
+                      <img src={imgSrc} alt={item.name} />
                     </div>
                     <div className="cart-item-details">
                       <div className="cart-item-name-row">
@@ -90,7 +94,7 @@ const ShoppingCart = () => {
                           <span className="cart-item-quantity">{quantity}</span>
                         )}
                       </div>
-                      <p className="cart-item-price">${item.price}</p>
+                      <p className="cart-item-price">{item.price} lei</p>
                       <button
                         className="cart-item-remove"
                         onClick={() => removeFromCart(item.name)}
@@ -107,7 +111,7 @@ const ShoppingCart = () => {
             <div className="cart-footer">
               <div className="cart-summary-row">
                 <span>Total</span>
-                <span>${subtotal.toFixed(2)}</span>
+                <span>{subtotal.toFixed(2)} lei</span>
               </div>
               <button className="cart-checkout">Checkout</button>
             </div>

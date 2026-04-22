@@ -1,272 +1,180 @@
+// Products mirror the live OhMyDress catalogue: dresses + Italian leather bags.
+// Images are served from the OhMyDress Shopify CDN.
 export const products = [
   {
-    name: "Unit 01",
-    price: "180",
+    name: "Black Deep V Dress",
+    price: "149",
     color: "Black",
-    tag: "Deform",
+    tag: "Dresses",
     sizes: ["S", "M", "L", "XL"],
+    image:
+      "https://ohmydress.store/cdn/shop/files/IMG_1531.jpg?v=1764368658&width=900",
     description:
-      "A modular black outer shell engineered with rigid layering and precision cuts—ideal for urban climates, built to disappear in low light.",
+      "A sculpted black mini dress with a daring deep V-neckline. Cut to hug the silhouette, finished with a fluid drape that moves with you.",
   },
   {
-    name: "Phase Field",
-    price: "160",
-    color: "Stone",
-    tag: "Sheerform",
-    sizes: ["M", "L", "XL"],
-    description:
-      "Field-ready modular wear in stone tones, featuring directional seams and a draped silhouette for fluid movement across environments.",
-  },
-  {
-    name: "Subzero",
-    price: "190",
-    color: "Ice",
-    tag: "Functionary",
+    name: "Halter Neck Ruched Red Gown",
+    price: "229",
+    color: "Red",
+    tag: "Dresses",
     sizes: ["S", "M", "L"],
+    image:
+      "https://ohmydress.store/cdn/shop/files/IMG_2715.jpg?v=1765380874&width=900",
     description:
-      "Lightweight jacket in a subtle ice tone, crafted for colder atmospheres with breathable construction and quiet futurism at its core.",
+      "A statement red gown with halter neck and architectural ruching. Designed to command the room, made to be remembered.",
   },
   {
-    name: "Echo Pattern",
-    price: "140",
-    color: "Grey",
-    tag: "Deform",
-    sizes: ["M", "L", "XL", "XXL"],
-    description:
-      "Textured grey layering piece with soft distortion surface details and a neutral aesthetic calibrated for motion and utility.",
-  },
-  {
-    name: "Soft Matter",
-    price: "120",
-    color: "White",
-    tag: "Sheerform",
-    sizes: ["S", "M", "L"],
-    description:
-      "Minimal white layer with soft-shell build and structural flow, balancing technical lines with fluid fabric motion.",
-  },
-  {
-    name: "Ghostwear",
-    price: "185",
-    color: "White",
-    tag: "Functionary",
-    sizes: ["M", "L", "XL"],
-    description:
-      "Translucent white shell with matte tonal overlays—built for minimal visibility and sensory softness across temperature shifts.",
-  },
-  {
-    name: "Core Module",
-    price: "150",
-    color: "Stone",
-    tag: "Deform",
-    sizes: ["S", "M", "L", "XL"],
-    description:
-      "Stone-layered midweight core piece with minimal branding, modular attachments, and internal system paneling.",
-  },
-  {
-    name: "Persona Null",
-    price: "175",
-    color: "Black",
-    tag: "Sheerform",
-    sizes: ["M", "L", "XL"],
-    description:
-      "Anti-identity outerwear in blackout, asymmetric cut lines and concealed fastenings—designed for detachment and drift.",
-  },
-  {
-    name: "Axis Drift",
-    price: "165",
-    color: "Grey",
-    tag: "Functionary",
-    sizes: ["S", "M", "L"],
-    description:
-      "A soft grey utility form built to wrap and reorient on body movement, echoing collapse and stretch in motion.",
-  },
-  {
-    name: "Patch v0.2",
-    price: "110",
-    color: "White",
-    tag: "Deform",
-    sizes: ["M", "L", "XL"],
-    description:
-      "Crisp white form with adaptive panel layout and micro utility pockets—a prototype layer made for future rewrites.",
-  },
-  {
-    name: "Relay Shell",
-    price: "145",
-    color: "Black",
-    tag: "Sheerform",
-    sizes: ["S", "M", "L"],
-    description:
-      "Shadow black outer with reactive fabric and structural folds, constructed to bypass signal and retain warmth.",
-  },
-  {
-    name: "Clone Form",
-    price: "130",
-    color: "Ice",
-    tag: "Functionary",
-    sizes: ["S", "M", "L", "XL"],
-    description:
-      "Icy neutral silhouette with reflective accents and reversible construction—a dual-form expression of adaptive layering.",
-  },
-  {
-    name: "Cold Proxy",
-    price: "155",
-    color: "Grey",
-    tag: "Deform",
-    sizes: ["M", "L", "XL"],
-    description:
-      "Soft grey insulated layer mimicking cold tactility, designed for semi-static zones and low interaction corridors.",
-  },
-  {
-    name: "Frame Shift",
-    price: "160",
-    color: "Stone",
-    tag: "Sheerform",
-    sizes: ["S", "M", "L", "XL"],
-    description:
-      "Stone-finished body with angular overlay panels and modular zip-outs—built to reconfigure with each movement frame.",
-  },
-  {
-    name: "Veil Unit",
-    price: "175",
-    color: "Ice",
-    tag: "Functionary",
-    sizes: ["S", "M", "L"],
-    description:
-      "Semi-translucent layering piece in soft ice, designed for concealment and diffusion—ideal for fragmented lighting and modular outfitting.",
-  },
-  {
-    name: "Null Form",
-    price: "165",
-    color: "Black",
-    tag: "Deform",
-    sizes: ["S", "M", "L", "XL"],
-    description:
-      "An all-black uniform shell stripped of markings, with dimensional construction lines and an identity-less profile made for clean resets.",
-  },
-  {
-    name: "Infra Veil",
-    price: "170",
-    color: "White",
-    tag: "Sheerform",
+    name: "Blue Stardust Halter Dress",
+    price: "189",
+    color: "Blue",
+    tag: "Dresses",
     sizes: ["XS", "S", "M", "L"],
+    image:
+      "https://ohmydress.store/cdn/shop/files/IMG_1623.jpg?v=1764369017&width=900",
     description:
-      "A radiant white coat with subtle sublayer seams and soft mirrored accents, designed for high-contrast atmospheres and neutral layering.",
+      "Hand-embellished sequin halter dress in midnight blue. Catches every flicker of light, holds attention without effort.",
   },
   {
-    name: "Zone Artifact",
-    price: "185",
-    color: "Stone",
-    tag: "Functionary",
-    sizes: ["S", "M", "L", "XL"],
-    description:
-      "Stone-colored soft-armor inspired shell jacket with reactive texture zones, adaptive stitch mapping, and tonal fracture lines.",
-  },
-  {
-    name: "Shellcode",
-    price: "160",
-    color: "Grey",
-    tag: "Deform",
-    sizes: ["S", "M", "L"],
-    description:
-      "Neutral grey long-form with sealed placket, hidden entry points, and binary stitch overlays—built like code, worn like static.",
-  },
-  {
-    name: "Second Host",
-    price: "150",
-    color: "Ice",
-    tag: "Sheerform",
-    sizes: ["S", "M", "L"],
-    description:
-      "Pale ice-toned skinwear form with low-profile cuffs and a neutral inner mesh—softly modular, designed for second-layer performance.",
-  },
-  {
-    name: "Noir Signal",
-    price: "190",
+    name: "Black Stardust Halter Dress",
+    price: "189",
     color: "Black",
-    tag: "Functionary",
-    sizes: ["M", "L", "XL"],
-    description:
-      "Deep black statement outerwear with curved overlay paneling and signal-suppressed design for quiet visual presence in charged spaces.",
-  },
-  {
-    name: "Dust Layer",
-    price: "142",
-    color: "Stone",
-    tag: "Deform",
+    tag: "Dresses",
     sizes: ["XS", "S", "M", "L"],
+    image:
+      "https://ohmydress.store/cdn/shop/files/IMG_1617.jpg?v=1764368834&width=900",
     description:
-      "Low-movement layer in muted stone, cut with angular drop sleeves and a dust-soft finish that breaks light across the body.",
+      "Sequin-embroidered halter in deep black. Sleek lines, soft drape — quiet glamour engineered for long evenings.",
   },
   {
-    name: "Greycode",
-    price: "158",
-    color: "Grey",
-    tag: "Sheerform",
+    name: "Terracotta Deep V Dress",
+    price: "129",
+    color: "Terracotta",
+    tag: "Dresses",
     sizes: ["S", "M", "L", "XL"],
+    image:
+      "https://ohmydress.store/cdn/shop/files/IMG_1198.jpg?v=1764330973&width=900",
     description:
-      "A soft technical shell in neutral grey with encoded vent seams and microstructured collar—functionality compressed into silence.",
+      "Warm terracotta mini with a plunging V-neck and figure-skimming cut. A modern take on the seasonal essential.",
   },
   {
-    name: "Unbody",
-    price: "170",
+    name: "Seraphine Noir Dress",
+    price: "159",
     color: "Black",
-    tag: "Functionary",
+    tag: "Dresses",
     sizes: ["S", "M", "L"],
+    image:
+      "https://ohmydress.store/cdn/shop/files/IMG_0590.jpg?v=1775580806&width=900",
     description:
-      "A blackout top-layer with sculpted tension zones and minimal profile, designed to disappear under low contrast and diffuse edge.",
+      "An ethereal black dress with refined draping and an elongated silhouette. Designed for the woman who chooses to stand out.",
   },
   {
-    name: "Pale Shard",
-    price: "145",
-    color: "White",
-    tag: "Deform",
-    sizes: ["S", "M", "L", "XL"],
-    description:
-      "Crisp white topcoat with shard-line darting and a nearly frameless silhouette that refracts form without reflecting structure.",
-  },
-  {
-    name: "Static Mist",
-    price: "135",
-    color: "Grey",
-    tag: "Sheerform",
-    sizes: ["M", "L", "XL"],
-    description:
-      "Grey-toned wind layer with interference-resistant fiber blend, shaped to disrupt silhouettes in motion and dissolve into atmosphere.",
-  },
-  {
-    name: "Ghost Line",
-    price: "155",
-    color: "Ice",
-    tag: "Functionary",
-    sizes: ["S", "M", "L", "XL"],
-    description:
-      "Pale minimal field uniform in ice, defined by seamless construction and directional venting for high fluidity across movement zones.",
-  },
-  {
-    name: "Phantom Skin",
-    price: "165",
-    color: "White",
-    tag: "Deform",
+    name: "Ivory Muse Mini Dress",
+    price: "179",
+    color: "Ivory",
+    tag: "Dresses",
     sizes: ["XS", "S", "M", "L"],
+    image:
+      "https://ohmydress.store/cdn/shop/files/IMG_0582.jpg?v=1775580501&width=900",
     description:
-      "High-density lightweight outer layer in white, designed with anatomical panel flow and soft-reactive pressure folds across spine line.",
+      "A romantic ivory mini with sculpted bodice and soft skirt. Bridal-adjacent, occasion-ready, effortlessly luminous.",
   },
   {
-    name: "Overcast Proxy",
-    price: "150",
-    color: "Grey",
-    tag: "Sheerform",
-    sizes: ["S", "M", "L"],
-    description:
-      "Neutral grey proxy fit with curved arms and fog-treated finish—built for ghosted movement across filtered daylight corridors.",
-  },
-  {
-    name: "Neutral Drift",
-    price: "165",
+    name: "Black Sculpt Tailored Suit",
+    price: "249",
     color: "Black",
-    tag: "Functionary",
-    sizes: ["S", "M", "L", "XL"],
+    tag: "Dresses",
+    sizes: ["S", "M", "L"],
+    image:
+      "https://ohmydress.store/cdn/shop/files/solero-2529.jpg?v=1764369346&width=900",
     description:
-      "Minimal black utility form with adaptive paneling and neutral drift construction—designed for seamless integration across environments.",
+      "A sharply tailored black suit cut for power and presence. Sculpted shoulders, clean lines, an heirloom-quality finish.",
+  },
+  {
+    name: "Suede Tote Bag — Burgundy",
+    price: "339",
+    color: "Burgundy",
+    tag: "Bags",
+    sizes: ["One Size"],
+    image:
+      "https://ohmydress.store/cdn/shop/files/IMG_0070.jpg?v=1765383226&width=900",
+    description:
+      "Genuine Italian suede tote in deep burgundy with a contrast red interior. Handcrafted to outlive trends.",
+  },
+  {
+    name: "Suede Tote Bag — Camel",
+    price: "339",
+    color: "Camel",
+    tag: "Bags",
+    sizes: ["One Size"],
+    image:
+      "https://ohmydress.store/cdn/shop/files/IMG_0058.jpg?v=1765383080&width=900",
+    description:
+      "Soft Italian suede tote in warm camel with crimson lining. Roomy, structured, made to be lived in.",
+  },
+  {
+    name: "Amelia Bag — Taupe",
+    price: "279",
+    color: "Camel",
+    tag: "Bags",
+    sizes: ["One Size"],
+    image:
+      "https://ohmydress.store/cdn/shop/files/IMG_3068_b5d50aea-f65e-45e2-8108-4969b2d1bcce.jpg?v=1766854095&width=900",
+    description:
+      "Petite shoulder bag crafted from genuine Italian leather in muted taupe. A timeless silhouette, refined for daily use.",
+  },
+  {
+    name: "Amelia Bag — Burgundy",
+    price: "279",
+    color: "Burgundy",
+    tag: "Bags",
+    sizes: ["One Size"],
+    image:
+      "https://ohmydress.store/cdn/shop/files/IMG_3072.jpg?v=1766854188&width=900",
+    description:
+      "The Amelia in deep burgundy leather. Subtle hardware, soft-grain finish, tailored to elevate any look.",
+  },
+  {
+    name: "Suede Heart-Shaped Bag — Taupe",
+    price: "229",
+    color: "Camel",
+    tag: "Bags",
+    sizes: ["One Size"],
+    image:
+      "https://ohmydress.store/cdn/shop/files/IMG_0141.jpg?v=1765382873&width=900",
+    description:
+      "A romantic heart-shaped suede bag in soft taupe. Italian craftsmanship with a poetic silhouette.",
+  },
+  {
+    name: "Suede Heart-Shaped Bag — Camel",
+    price: "229",
+    color: "Camel",
+    tag: "Bags",
+    sizes: ["One Size"],
+    image:
+      "https://ohmydress.store/cdn/shop/files/IMG_3704.jpg?v=1765382118&width=900",
+    description:
+      "Heart-shaped Italian suede bag in warm camel. A small statement piece with real character.",
+  },
+  {
+    name: "Velvet Plunge Dress",
+    price: "199",
+    color: "Burgundy",
+    tag: "Dresses",
+    sizes: ["XS", "S", "M", "L"],
+    image:
+      "https://ohmydress.store/cdn/shop/files/IMG_2827.jpg?v=1765537119&width=900",
+    description:
+      "Liquid velvet dress in rich burgundy with a deep plunge neckline. Sensual, structured, made for entrances.",
+  },
+  {
+    name: "Crystal Mesh Mini",
+    price: "219",
+    color: "Black",
+    tag: "Dresses",
+    sizes: ["XS", "S", "M"],
+    image:
+      "https://ohmydress.store/cdn/shop/files/IMG_1624.jpg?v=1764368959&width=900",
+    description:
+      "A glittering mesh mini covered in crystal embellishment. Designed to catch every light in the room.",
   },
 ];

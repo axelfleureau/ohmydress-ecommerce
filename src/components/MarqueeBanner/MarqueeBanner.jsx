@@ -39,26 +39,29 @@ const MarqueeBanner = () => {
     <section className="marquee-banner" ref={marqueeBannerRef}>
       <div className="marquees">
         <div className="marquee-header marquee-header-1" ref={marquee1Ref}>
-          <h1>Transmission lost in neutral space</h1>
+          <h1>Dress it like you own it ✦ Winter discounts ✦</h1>
         </div>
         <div className="marquee-header marquee-header-2" ref={marquee2Ref}>
-          <h1>Synthetic forms archive the signal</h1>
+          <h1>Limited drops ✦ Made in Italy ✦</h1>
         </div>
       </div>
       <div className="banner">
         <div className="banner-content">
           <Copy type="flicker">
-            <p>[ Frame Shift ]</p>
+            <p>[ New Releases ]</p>
           </Copy>
           <Copy>
-            <h4>Modular silence across systems</h4>
+            <h4>Sensuality, elegance, attention to every detail.</h4>
           </Copy>
         </div>
         <div className="banner-img">
-          <img src="/marquee-banner/marquee_banner_01.png" alt="" />
+          <img
+            src="https://ohmydress.store/cdn/shop/files/IMG_0784.jpg?v=1760356962&width=1200"
+            alt="OhMyDress signature look"
+          />
         </div>
         <div className="banner-logo">
-          <h5>Nrmlss</h5>
+          <h5>OhMyDress</h5>
         </div>
       </div>
     </section>

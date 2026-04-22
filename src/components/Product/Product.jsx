@@ -22,22 +22,25 @@ const Product = ({
     }
   };
 
+  const imgSrc =
+    product?.image || `/products/product_${productIndex}.png`;
+
   return (
     <div className={`product ${className}`} ref={innerRef} style={style}>
       <Link href="/unit" className="product-img" onClick={handleImageClick}>
-        <img src={`/products/product_${productIndex}.png`} alt={product.name} />
+        <img src={imgSrc} alt={product.name} />
       </Link>
       <div className="product-info">
         <div className="product-info-wrapper">
           <p>{product.name}</p>
-          <p>${product.price}</p>
+          <p>{product.price} lei</p>
         </div>
         {showAddToCart && (
           <button
             className="add-to-cart-btn"
             onClick={() => addToCart(product)}
           >
-            Add to Cart
+            Add to Bag
           </button>
         )}
       </div>

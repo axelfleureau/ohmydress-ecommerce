@@ -70,7 +70,7 @@ export default function Wardrobe() {
       <section className="products-header">
         <div className="container">
           <Copy animateOnScroll={false} delay={0.65}>
-            <h1>Wardrobe Circulation</h1>
+            <h1>The Collection</h1>
           </Copy>
           <div className="products-header-divider"></div>
           <div className="product-filter-bar">
@@ -78,7 +78,7 @@ export default function Wardrobe() {
               <p className="bodyCopy">Filters</p>
             </div>
             <div className="filter-bar-tags">
-              {["All", "Sheerform", "Functionary", "Deform"].map((tag) => (
+              {["All", "Dresses", "Bags"].map((tag) => (
                 <p
                   key={tag}
                   className={`bodyCopy ${activeTag === tag ? "active" : ""}`}
@@ -89,7 +89,15 @@ export default function Wardrobe() {
               ))}
             </div>
             <div className="filter-bar-colors">
-              {["Black", "Stone", "Ice", "Grey", "White"].map((color) => (
+              {[
+                "Black",
+                "Red",
+                "Burgundy",
+                "Blue",
+                "Ivory",
+                "Camel",
+                "Terracotta",
+              ].map((color) => (
                 <span
                   key={color}
                   className={`color-selector ${color.toLowerCase()} ${

@@ -88,7 +88,7 @@ const Preloader = () => {
           duration: 1,
         })
           .add(animateProgress(), "<")
-          .set(".preloader-progress", { backgroundColor: "#fff" })
+          .set(".preloader-progress", { backgroundColor: "#fffdf8" })
           .to(
             logoSplit.chars,
             {
@@ -129,7 +129,7 @@ const Preloader = () => {
       <div className="preloader-progress">
         <div className="preloader-progress-bar"></div>
         <div className="preloader-logo">
-          <h1>Nrmlss</h1>
+          <h1>OhMyDress</h1>
         </div>
       </div>
       <div className="preloader-mask"></div>

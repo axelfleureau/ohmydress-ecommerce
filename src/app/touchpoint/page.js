@@ -66,31 +66,34 @@ export default function Touchpoint() {
           <div className="contact-hero-col contact-hero-copy">
             <div className="contact-header">
               <Copy animateOnScroll={false} delay={0.75}>
-                <h3>Outbound access is limited, proceed with intent.</h3>
+                <h3>Get in touch — we'd love to hear from you.</h3>
               </Copy>
             </div>
             <div className="contact-meta">
               <div className="contact-meta-block">
                 <Copy animateOnScroll={false} delay={0.9}>
-                  <p className="bodyCopy">External Comms Protocol</p>
+                  <p className="bodyCopy">Customer Care</p>
                 </Copy>
                 <Copy animateOnScroll={false} delay={1}>
-                  <h4>echo@nrmlss.co</h4>
+                  <h4>hello@ohmydress.ro</h4>
                 </Copy>
               </div>
               <div className="contact-meta-block">
                 <Copy animateOnScroll={false} delay={1.1}>
-                  <p className="bodyCopy">Dispatch Inquiry System</p>
+                  <p className="bodyCopy">Press & Wholesale</p>
                 </Copy>
                 <Copy animateOnScroll={false} delay={1.2}>
-                  <h4>dispatch@nrmlss.co</h4>
+                  <h4>press@ohmydress.ro</h4>
                 </Copy>
               </div>
             </div>
           </div>
           <div className="contact-hero-col contact-hero-img-wrapper">
             <div className="contact-hero-img" ref={contactHeroImgRef}>
-              <img src="/contact/hero.png" alt="" />
+              <img
+                src="https://ohmydress.store/cdn/shop/files/IMG_2715.jpg?v=1765380874&width=1200"
+                alt=""
+              />
             </div>
           </div>
         </div>
@@ -104,15 +107,19 @@ export default function Touchpoint() {
             </div>
             <Copy type="flicker">
               <p>
-                Get early signals, private releases, and occasional noise worth
-                hearing. You'll know when it matters.
+                Sign up for early access to new releases, private drops and
+                seasonal previews. We only reach out when there's something
+                worth seeing.
               </p>
             </Copy>
             <Copy>
-              <h1>Connect to the silent grid</h1>
+              <h1>Stay close to the collection</h1>
             </Copy>
             <div className="contact-callout-img">
-              <img src="/contact/contact-callout.jpg" alt="" />
+              <img
+                src="https://ohmydress.store/cdn/shop/files/IMG_1623.jpg?v=1764369017&width=1200"
+                alt=""
+              />
             </div>
           </div>
         </div>

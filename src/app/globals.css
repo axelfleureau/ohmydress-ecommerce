@@ -1,11 +1,15 @@
 :root {
-  --base-100: #edf1e8;
-  --base-200: #d7dbd2;
-  --base-300: #afb3ab;
-  --base-400: #969992;
-  --base-500: #7d807a;
-  --base-600: #1f1f1f;
-  --base-700: #0f0f0f;
+  /* OhMyDress palette: cream background, deep burgundy primary, soft neutrals */
+  --base-100: #fffdf8;
+  --base-200: #f3ece1;
+  --base-300: #d9cdb9;
+  --base-400: #a89884;
+  --base-500: #6b5d4b;
+  --base-600: #1a1a1a;
+  --base-700: #0d0d0d;
+  --brand-burgundy: #7d1528;
+  --brand-burgundy-deep: #5a0e1c;
+  --brand-gold: #b08a4a;
 }
 
 * {
@@ -34,35 +38,36 @@ h2,
 h3,
 h4,
 h5 {
-  text-transform: uppercase;
-  font-family: var(--font-koulen), sans-serif;
-  font-weight: 400;
-  line-height: 0.8;
+  font-family: var(--font-playfair), Georgia, serif;
+  font-weight: 500;
+  line-height: 1;
+  letter-spacing: -0.01em;
+  font-style: italic;
 }
 
 h1 {
-  font-size: clamp(4rem, 10vw, 10rem);
-  letter-spacing: clamp(-0.15rem, -1vw, -0.25rem);
+  font-size: clamp(3.5rem, 9vw, 9rem);
+  letter-spacing: clamp(-0.1rem, -0.5vw, -0.2rem);
 }
 
 h2 {
-  font-size: clamp(3.25rem, 8vw, 8rem);
-  letter-spacing: clamp(-0.0125rem, -0.75vw, -0.2rem);
+  font-size: clamp(2.75rem, 7vw, 7rem);
+  letter-spacing: clamp(-0.0125rem, -0.4vw, -0.15rem);
 }
 
 h3 {
-  font-size: clamp(2.5rem, 6.5vw, 5rem);
-  letter-spacing: clamp(-0.035rem, -0.5vw, -0.075rem);
+  font-size: clamp(2.25rem, 5.5vw, 4.5rem);
+  letter-spacing: -0.02em;
 }
 
 h4 {
-  font-size: clamp(2rem, 4.5vw, 4rem);
-  letter-spacing: clamp(0rem, -0.5vw, -0.075rem);
+  font-size: clamp(1.75rem, 4vw, 3.5rem);
+  letter-spacing: -0.01em;
 }
 
 h5 {
-  font-size: clamp(1.25rem, 2vw, 3rem);
-  letter-spacing: clamp(0rem, -0.25vw, -0.05rem);
+  font-size: clamp(1.125rem, 1.8vw, 2.5rem);
+  letter-spacing: -0.005em;
 }
 
 a,
@@ -71,95 +76,105 @@ span {
   text-decoration: none;
   text-transform: uppercase;
   color: var(--base-700);
-  font-family: var(--font-dm-mono), monospace;
+  font-family: var(--font-cormorant), Georgia, serif;
   font-weight: 500;
-  line-height: 1;
+  letter-spacing: 0.12em;
+  line-height: 1.1;
 }
 
 a,
 p,
 span {
-  font-size: clamp(0.8rem, 0.75vw, 0.85rem);
+  font-size: clamp(0.85rem, 0.8vw, 0.95rem);
 }
 
 a.md,
 p.md,
 span.md {
-  font-size: clamp(1rem, 0.8vw, 1.25rem);
+  font-size: clamp(1rem, 0.9vw, 1.15rem);
 }
 
 a.lg,
 p.lg,
 span.lg {
-  font-size: clamp(1.1rem, 0.85vw, 1.35rem);
+  font-size: clamp(1.1rem, 1vw, 1.25rem);
 }
 
 p.bodyCopy {
   text-transform: none;
-  font-family: var(--font-host-grotesk), sans-serif;
+  font-family: var(--font-cormorant), Georgia, serif;
   font-weight: 400;
-  line-height: 1.1;
-  letter-spacing: -0.01rem;
+  letter-spacing: 0.005em;
+  line-height: 1.4;
 }
 
 p.bodyCopy {
-  font-size: clamp(1.125rem, 0.75vw, 1.25rem);
+  font-size: clamp(1.125rem, 0.85vw, 1.3rem);
 }
 
 p.bodyCopy.md {
-  font-size: clamp(1.25rem, 0.85vw, 1.35rem);
+  font-size: clamp(1.25rem, 0.95vw, 1.4rem);
 }
 
 p.bodyCopy.lg {
-  font-size: clamp(1.375rem, 0.95vw, 1.45rem);
+  font-size: clamp(1.4rem, 1.05vw, 1.55rem);
 }
 
 button {
   border: none;
   outline: none;
-  padding: 1.25rem 0.75rem;
+  padding: 1.1rem 1.5rem;
   text-decoration: none;
   text-transform: uppercase;
   color: var(--base-700);
-  font-family: var(--font-dm-mono), monospace;
-  font-weight: 500;
-  font-size: clamp(0.85rem, 1vw, 0.85rem);
+  font-family: var(--font-cormorant), Georgia, serif;
+  font-weight: 600;
+  letter-spacing: 0.15em;
+  font-size: clamp(0.85rem, 1vw, 0.9rem);
   line-height: 1;
-  border-radius: 0.5rem;
+  border-radius: 0;
   cursor: pointer;
   transition: 300ms all ease-in-out;
 }
 
 button:active {
-  transform: scale(0.95);
+  transform: scale(0.97);
 }
 
 button.primary {
-  background: var(--base-700);
+  background: var(--brand-burgundy);
   color: var(--base-100);
+}
+
+button.primary:hover {
+  background: var(--brand-burgundy-deep);
 }
 
 button.secondary {
-  background: var(--base-400);
-  color: var(--base-100);
+  background: transparent;
+  color: var(--base-700);
+  border: 1px solid var(--base-700);
 }
 
 .btn a {
-  background: var(--base-200);
+  background: var(--brand-burgundy);
   color: var(--base-100);
   display: block;
-  border-radius: 0.5rem;
-  padding: 1.25rem 1.75rem;
+  border-radius: 0;
+  padding: 1.25rem 2rem;
   text-decoration: none;
   text-transform: uppercase;
-  color: var(--base-700);
-  font-family: var(--font-dm-mono), monospace;
-  font-weight: 500;
-  font-size: clamp(0.85rem, 1vw, 0.85rem);
+  font-family: var(--font-cormorant), Georgia, serif;
+  font-weight: 600;
+  letter-spacing: 0.18em;
+  font-size: clamp(0.85rem, 1vw, 0.9rem);
   line-height: 1;
-  border-radius: 0.5rem;
   cursor: pointer;
   transition: 300ms all ease-in-out;
+}
+
+.btn a:hover {
+  background: var(--brand-burgundy-deep);
 }
 
 .container {
@@ -218,7 +233,7 @@ button.secondary {
 .transition-block {
   position: absolute;
   top: 0;
-  background-color: var(--base-500);
+  background-color: var(--brand-burgundy);
   transform-origin: left;
 }
 

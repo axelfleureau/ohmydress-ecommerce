@@ -21,33 +21,6 @@ const Menu = () => {
   const mainLinkSplitsRef = useRef([]);
   const lastScrollY = useRef(0);
 
-  const scrambleText = (elements, duration = 0.4) => {
-    const chars = "ABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789!@#$%^&*()";
-
-    elements.forEach((char) => {
-      const originalText = char.textContent;
-      let iterations = 0;
-      const maxIterations = Math.floor(Math.random() * 6) + 3;
-
-      gsap.set(char, { opacity: 1 });
-
-      const scrambleInterval = setInterval(() => {
-        char.textContent = chars[Math.floor(Math.random() * chars.length)];
-        iterations++;
-
-        if (iterations >= maxIterations) {
-          clearInterval(scrambleInterval);
-          char.textContent = originalText;
-        }
-      }, 25);
-
-      setTimeout(() => {
-        clearInterval(scrambleInterval);
-        char.textContent = originalText;
-      }, duration * 1000);
-    });
-  };
-
   const openMenu = () => {
     setIsOpen(true);
     setIsAnimating(true);
@@ -101,15 +74,19 @@ const Menu = () => {
       );
     });
 
-    tl.add(() => {
-      splitTextsRef.current.forEach((split) => {
-        split.chars.forEach((char, index) => {
-          setTimeout(() => {
-            scrambleText([char], 0.4);
-          }, index * 30);
-        });
-      });
-    }, "<");
+    tl.to(
+      splitTextsRef.current.reduce(
+        (acc, split) => acc.concat(split.chars),
+        []
+      ),
+      {
+        opacity: 1,
+        duration: 0.4,
+        stagger: 0.02,
+        ease: "power2.out",
+      },
+      "<"
+    );
   };
 
   const closeMenu = () => {
@@ -296,7 +273,7 @@ const Menu = () => {
   return (
     <nav className="menu" ref={menuRef}>
       <div className="menu-header" onClick={toggleMenu}>
-        <h4 className="menu-logo">Nrmlss</h4>
+        <h4 className="menu-logo">OhMyDress</h4>
         <button className="menu-toggle" aria-label="Toggle menu">
           <div className="menu-hamburger-icon" ref={hamburgerRef}>
             <span className="menu-item"></span>
@@ -309,7 +286,7 @@ const Menu = () => {
         <div className="menu-overlay-items">
           <div className="menu-overlay-col menu-overlay-col-sm">
             <div className="menu-items-header">
-              <p>Root</p>
+              <p>Shop</p>
             </div>
             <div className="menu-main-links">
               <Link
@@ -317,57 +294,57 @@ const Menu = () => {
                 className="menu-main-link"
                 onClick={handleLinkClick}
               >
-                <h4>Index</h4>
+                <h4>Home</h4>
               </Link>
               <Link
                 href="/wardrobe"
                 className="menu-main-link"
                 onClick={handleLinkClick}
               >
-                <h4>Wardrobe</h4>
+                <h4>Dresses & Bags</h4>
               </Link>
               <Link
                 href="/genesis"
                 className="menu-main-link"
                 onClick={handleLinkClick}
               >
-                <h4>Genesis</h4>
+                <h4>Our Story</h4>
               </Link>
             </div>
           </div>
           <div className="menu-overlay-col menu-overlay-col-lg">
             <div className="menu-overlay-sub-col">
               <div className="menu-items-header">
-                <p>Subroutine</p>
+                <p>Discover</p>
               </div>
               <div className="menu-sub-links">
                 <Link href="/lookbook" onClick={handleLinkClick}>
                   Lookbook
                 </Link>
                 <Link href="/touchpoint" onClick={handleLinkClick}>
-                  Touchpoint
+                  Contact
                 </Link>
                 <Link href="/unit" onClick={handleLinkClick}>
-                  Shell (A)
+                  Featured Piece
                 </Link>
               </div>
             </div>
             <div className="menu-overlay-sub-col">
               <div className="menu-items-header">
-                <p>Field Tests</p>
+                <p>New In</p>
               </div>
               <div className="menu-sub-links menu-product-links">
                 <Link href="/product" onClick={handleLinkClick}>
-                  01. Unbody
+                  01. Halter Neck Ruched Red Gown
                 </Link>
                 <Link href="/product" onClick={handleLinkClick}>
-                  02. Persona Null
+                  02. Velvet Plunge Dress
                 </Link>
                 <Link href="/product" onClick={handleLinkClick}>
-                  03. Second Host
+                  03. Amelia Bag — Burgundy
                 </Link>
                 <Link href="/product" onClick={handleLinkClick}>
-                  04. Shellcode
+                  04. Ivory Muse Mini Dress
                 </Link>
               </div>
             </div>
@@ -376,17 +353,7 @@ const Menu = () => {
         <div className="menu-overlay-footer">
           <div className="menu-social">
             <a
-              href="https://x.com/codegridweb"
-              target="_blank"
-              rel="noopener noreferrer"
-              onClick={handleLinkClick}
-            >
-              Twitter
-            </a>
-          </div>
-          <div className="menu-social">
-            <a
-              href="https://www.instagram.com/codegridweb/"
+              href="https://www.instagram.com/ohmydress.store/"
               target="_blank"
               rel="noopener noreferrer"
               onClick={handleLinkClick}
@@ -396,12 +363,22 @@ const Menu = () => {
           </div>
           <div className="menu-social">
             <a
-              href="https://www.youtube.com/@codegrid"
+              href="https://www.tiktok.com/@ohmydress"
               target="_blank"
               rel="noopener noreferrer"
               onClick={handleLinkClick}
             >
-              YouTube
+              TikTok
+            </a>
+          </div>
+          <div className="menu-social">
+            <a
+              href="mailto:hello@ohmydress.ro"
+              target="_blank"
+              rel="noopener noreferrer"
+              onClick={handleLinkClick}
+            >
+              Email
             </a>
           </div>
         </div>

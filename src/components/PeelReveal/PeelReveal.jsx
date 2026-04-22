@@ -10,6 +10,9 @@ import { SplitText } from "gsap/SplitText";
 
 gsap.registerPlugin(ScrollTrigger, SplitText);
 
+const PEEL_IMG =
+  "https://ohmydress.store/cdn/shop/files/IMG_0784.jpg?v=1760356962&width=1600";
+
 const PeelReveal = () => {
   const peelRevealContainerRef = useRef(null);
 
@@ -126,49 +129,49 @@ const PeelReveal = () => {
       <section className="peel-reveal">
         <div className="section-header">
           <Copy type="flicker">
-            <p>Signal type: Neutral</p>
+            <p>Made in Italy</p>
           </Copy>
           <Copy type="flicker">
-            <p>Module ID: Nrmlss_001</p>
+            <p>Limited Edition</p>
           </Copy>
         </div>
         <div className="section-footer">
           <Copy type="flicker">
-            <p>Status: Detached</p>
+            <p>Status: New Drop</p>
           </Copy>
         </div>
         <div className="peel-reveal-img-container">
           <div className="pr-img">
-            <img src="/peel-reveal/peel-reveal-img.jpg" alt="Peel reveal" />
+            <img src={PEEL_IMG} alt="OhMyDress signature" />
           </div>
           <div className="pr-img mask">
-            <img src="/peel-reveal/peel-reveal-img.jpg" alt="" />
+            <img src={PEEL_IMG} alt="" />
           </div>
           <div className="pr-img mask">
-            <img src="/peel-reveal/peel-reveal-img.jpg" alt="" />
+            <img src={PEEL_IMG} alt="" />
           </div>
           <div className="pr-img mask">
-            <img src="/peel-reveal/peel-reveal-img.jpg" alt="" />
+            <img src={PEEL_IMG} alt="" />
           </div>
           <div className="pr-img mask">
-            <img src="/peel-reveal/peel-reveal-img.jpg" alt="" />
+            <img src={PEEL_IMG} alt="" />
           </div>
           <div className="pr-img mask">
-            <img src="/peel-reveal/peel-reveal-img.jpg" alt="" />
+            <img src={PEEL_IMG} alt="" />
           </div>
           <div className="pr-img mask">
-            <img src="/peel-reveal/peel-reveal-img.jpg" alt="" />
+            <img src={PEEL_IMG} alt="" />
           </div>
           <div className="peel-reveal-header">
-            <h1>The uniform holds no allegiance</h1>
+            <h1>Dress it like you own it</h1>
           </div>
         </div>
         <div className="peel-reveal-intro-text-container">
           <div className="peel-reveal-intro-text">
-            <h1>Signal</h1>
+            <h1>Bold</h1>
           </div>
           <div className="peel-reveal-intro-text">
-            <h1>Motion</h1>
+            <h1>Elegant</h1>
           </div>
         </div>
       </section>

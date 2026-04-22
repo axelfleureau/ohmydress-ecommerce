@@ -69,20 +69,28 @@
   background-color: #121212;
 }
 
-.products-header .filter-bar-colors span.stone {
-  background-color: #a49e91;
+.products-header .filter-bar-colors span.red {
+  background-color: #b81b2c;
 }
 
-.products-header .filter-bar-colors span.ice {
-  background-color: #bfc4cb;
+.products-header .filter-bar-colors span.burgundy {
+  background-color: #7d1528;
 }
 
-.products-header .filter-bar-colors span.grey {
-  background-color: #686868;
+.products-header .filter-bar-colors span.blue {
+  background-color: #1e3a8a;
 }
 
-.products-header .filter-bar-colors span.white {
-  background-color: #ffffff;
+.products-header .filter-bar-colors span.ivory {
+  background-color: #f5ecd9;
+}
+
+.products-header .filter-bar-colors span.camel {
+  background-color: #b08a4a;
+}
+
+.products-header .filter-bar-colors span.terracotta {
+  background-color: #b25434;
 }
 
 .products-header .filter-bar-colors span.active {

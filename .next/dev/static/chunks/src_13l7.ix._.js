@@ -137,29 +137,6 @@ const Menu = ()=>{
     const splitTextsRef = (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$index$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["useRef"])([]);
     const mainLinkSplitsRef = (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$index$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["useRef"])([]);
     const lastScrollY = (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$index$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["useRef"])(0);
-    const scrambleText = (elements, duration = 0.4)=>{
-        const chars = "ABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789!@#$%^&*()";
-        elements.forEach((char)=>{
-            const originalText = char.textContent;
-            let iterations = 0;
-            const maxIterations = Math.floor(Math.random() * 6) + 3;
-            __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$gsap$2f$index$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__$3c$locals$3e$__["default"].set(char, {
-                opacity: 1
-            });
-            const scrambleInterval = setInterval(()=>{
-                char.textContent = chars[Math.floor(Math.random() * chars.length)];
-                iterations++;
-                if (iterations >= maxIterations) {
-                    clearInterval(scrambleInterval);
-                    char.textContent = originalText;
-                }
-            }, 25);
-            setTimeout(()=>{
-                clearInterval(scrambleInterval);
-                char.textContent = originalText;
-            }, duration * 1000);
-        });
-    };
     const openMenu = ()=>{
         setIsOpen(true);
         setIsAnimating(true);
@@ -196,16 +173,11 @@ const Menu = ()=>{
                 ease: "power4.out"
             }, "<");
         });
-        tl.add(()=>{
-            splitTextsRef.current.forEach((split)=>{
-                split.chars.forEach((char, index)=>{
-                    setTimeout(()=>{
-                        scrambleText([
-                            char
-                        ], 0.4);
-                    }, index * 30);
-                });
-            });
+        tl.to(splitTextsRef.current.reduce((acc, split)=>acc.concat(split.chars), []), {
+            opacity: 1,
+            duration: 0.4,
+            stagger: 0.02,
+            ease: "power2.out"
         }, "<");
     };
     const closeMenu = ()=>{
@@ -376,10 +348,10 @@ const Menu = ()=>{
                 children: [
                     /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("h4", {
                         className: "menu-logo",
-                        children: "Nrmlss"
+                        children: "OhMyDress"
                     }, void 0, false, {
                         fileName: "[project]/src/components/Menu/Menu.jsx",
-                        lineNumber: 299,
+                        lineNumber: 276,
                         columnNumber: 9
                     }, ("TURBOPACK compile-time value", void 0)),
                     /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("button", {
@@ -393,31 +365,31 @@ const Menu = ()=>{
                                     className: "menu-item"
                                 }, void 0, false, {
                                     fileName: "[project]/src/components/Menu/Menu.jsx",
-                                    lineNumber: 302,
+                                    lineNumber: 279,
                                     columnNumber: 13
                                 }, ("TURBOPACK compile-time value", void 0)),
                                 /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("span", {
                                     className: "menu-item"
                                 }, void 0, false, {
                                     fileName: "[project]/src/components/Menu/Menu.jsx",
-                                    lineNumber: 303,
+                                    lineNumber: 280,
                                     columnNumber: 13
                                 }, ("TURBOPACK compile-time value", void 0))
                             ]
                         }, void 0, true, {
                             fileName: "[project]/src/components/Menu/Menu.jsx",
-                            lineNumber: 301,
+                            lineNumber: 278,
                             columnNumber: 11
                         }, ("TURBOPACK compile-time value", void 0))
                     }, void 0, false, {
                         fileName: "[project]/src/components/Menu/Menu.jsx",
-                        lineNumber: 300,
+                        lineNumber: 277,
                         columnNumber: 9
                     }, ("TURBOPACK compile-time value", void 0))
                 ]
             }, void 0, true, {
                 fileName: "[project]/src/components/Menu/Menu.jsx",
-                lineNumber: 298,
+                lineNumber: 275,
                 columnNumber: 7
             }, ("TURBOPACK compile-time value", void 0)),
             /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
@@ -433,15 +405,15 @@ const Menu = ()=>{
                                     /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
                                         className: "menu-items-header",
                                         children: /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("p", {
-                                            children: "Root"
+                                            children: "Shop"
                                         }, void 0, false, {
                                             fileName: "[project]/src/components/Menu/Menu.jsx",
-                                            lineNumber: 312,
+                                            lineNumber: 289,
                                             columnNumber: 15
                                         }, ("TURBOPACK compile-time value", void 0))
                                     }, void 0, false, {
                                         fileName: "[project]/src/components/Menu/Menu.jsx",
-                                        lineNumber: 311,
+                                        lineNumber: 288,
                                         columnNumber: 13
                                     }, ("TURBOPACK compile-time value", void 0)),
                                     /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
@@ -452,15 +424,15 @@ const Menu = ()=>{
                                                 className: "menu-main-link",
                                                 onClick: handleLinkClick,
                                                 children: /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("h4", {
-                                                    children: "Index"
+                                                    children: "Home"
                                                 }, void 0, false, {
                                                     fileName: "[project]/src/components/Menu/Menu.jsx",
-                                                    lineNumber: 320,
+                                                    lineNumber: 297,
                                                     columnNumber: 17
                                                 }, ("TURBOPACK compile-time value", void 0))
                                             }, void 0, false, {
                                                 fileName: "[project]/src/components/Menu/Menu.jsx",
-                                                lineNumber: 315,
+                                                lineNumber: 292,
                                                 columnNumber: 15
                                             }, ("TURBOPACK compile-time value", void 0)),
                                             /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$client$2f$app$2d$dir$2f$link$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["default"], {
@@ -468,15 +440,15 @@ const Menu = ()=>{
                                                 className: "menu-main-link",
                                                 onClick: handleLinkClick,
                                                 children: /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("h4", {
-                                                    children: "Wardrobe"
+                                                    children: "Dresses & Bags"
                                                 }, void 0, false, {
                                                     fileName: "[project]/src/components/Menu/Menu.jsx",
-                                                    lineNumber: 327,
+                                                    lineNumber: 304,
                                                     columnNumber: 17
                                                 }, ("TURBOPACK compile-time value", void 0))
                                             }, void 0, false, {
                                                 fileName: "[project]/src/components/Menu/Menu.jsx",
-                                                lineNumber: 322,
+                                                lineNumber: 299,
                                                 columnNumber: 15
                                             }, ("TURBOPACK compile-time value", void 0)),
                                             /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$client$2f$app$2d$dir$2f$link$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["default"], {
@@ -484,27 +456,27 @@ const Menu = ()=>{
                                                 className: "menu-main-link",
                                                 onClick: handleLinkClick,
                                                 children: /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("h4", {
-                                                    children: "Genesis"
+                                                    children: "Our Story"
                                                 }, void 0, false, {
                                                     fileName: "[project]/src/components/Menu/Menu.jsx",
-                                                    lineNumber: 334,
+                                                    lineNumber: 311,
                                                     columnNumber: 17
                                                 }, ("TURBOPACK compile-time value", void 0))
                                             }, void 0, false, {
                                                 fileName: "[project]/src/components/Menu/Menu.jsx",
-                                                lineNumber: 329,
+                                                lineNumber: 306,
                                                 columnNumber: 15
                                             }, ("TURBOPACK compile-time value", void 0))
                                         ]
                                     }, void 0, true, {
                                         fileName: "[project]/src/components/Menu/Menu.jsx",
-                                        lineNumber: 314,
+                                        lineNumber: 291,
                                         columnNumber: 13
                                     }, ("TURBOPACK compile-time value", void 0))
                                 ]
                             }, void 0, true, {
                                 fileName: "[project]/src/components/Menu/Menu.jsx",
-                                lineNumber: 310,
+                                lineNumber: 287,
                                 columnNumber: 11
                             }, ("TURBOPACK compile-time value", void 0)),
                             /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
@@ -516,15 +488,15 @@ const Menu = ()=>{
                                             /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
                                                 className: "menu-items-header",
                                                 children: /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("p", {
-                                                    children: "Subroutine"
+                                                    children: "Discover"
                                                 }, void 0, false, {
                                                     fileName: "[project]/src/components/Menu/Menu.jsx",
-                                                    lineNumber: 341,
+                                                    lineNumber: 318,
                                                     columnNumber: 17
                                                 }, ("TURBOPACK compile-time value", void 0))
                                             }, void 0, false, {
                                                 fileName: "[project]/src/components/Menu/Menu.jsx",
-                                                lineNumber: 340,
+                                                lineNumber: 317,
                                                 columnNumber: 15
                                             }, ("TURBOPACK compile-time value", void 0)),
                                             /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
@@ -536,37 +508,37 @@ const Menu = ()=>{
                                                         children: "Lookbook"
                                                     }, void 0, false, {
                                                         fileName: "[project]/src/components/Menu/Menu.jsx",
-                                                        lineNumber: 344,
+                                                        lineNumber: 321,
                                                         columnNumber: 17
                                                     }, ("TURBOPACK compile-time value", void 0)),
                                                     /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$client$2f$app$2d$dir$2f$link$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["default"], {
                                                         href: "/touchpoint",
                                                         onClick: handleLinkClick,
-                                                        children: "Touchpoint"
+                                                        children: "Contact"
                                                     }, void 0, false, {
                                                         fileName: "[project]/src/components/Menu/Menu.jsx",
-                                                        lineNumber: 347,
+                                                        lineNumber: 324,
                                                         columnNumber: 17
                                                     }, ("TURBOPACK compile-time value", void 0)),
                                                     /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$client$2f$app$2d$dir$2f$link$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["default"], {
                                                         href: "/unit",
                                                         onClick: handleLinkClick,
-                                                        children: "Shell (A)"
+                                                        children: "Featured Piece"
                                                     }, void 0, false, {
                                                         fileName: "[project]/src/components/Menu/Menu.jsx",
-                                                        lineNumber: 350,
+                                                        lineNumber: 327,
                                                         columnNumber: 17
                                                     }, ("TURBOPACK compile-time value", void 0))
                                                 ]
                                             }, void 0, true, {
                                                 fileName: "[project]/src/components/Menu/Menu.jsx",
-                                                lineNumber: 343,
+                                                lineNumber: 320,
                                                 columnNumber: 15
                                             }, ("TURBOPACK compile-time value", void 0))
                                         ]
                                     }, void 0, true, {
                                         fileName: "[project]/src/components/Menu/Menu.jsx",
-                                        lineNumber: 339,
+                                        lineNumber: 316,
                                         columnNumber: 13
                                     }, ("TURBOPACK compile-time value", void 0)),
                                     /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
@@ -575,15 +547,15 @@ const Menu = ()=>{
                                             /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
                                                 className: "menu-items-header",
                                                 children: /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("p", {
-                                                    children: "Field Tests"
+                                                    children: "New In"
                                                 }, void 0, false, {
                                                     fileName: "[project]/src/components/Menu/Menu.jsx",
-                                                    lineNumber: 357,
+                                                    lineNumber: 334,
                                                     columnNumber: 17
                                                 }, ("TURBOPACK compile-time value", void 0))
                                             }, void 0, false, {
                                                 fileName: "[project]/src/components/Menu/Menu.jsx",
-                                                lineNumber: 356,
+                                                lineNumber: 333,
                                                 columnNumber: 15
                                             }, ("TURBOPACK compile-time value", void 0)),
                                             /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
@@ -592,61 +564,61 @@ const Menu = ()=>{
                                                     /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$client$2f$app$2d$dir$2f$link$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["default"], {
                                                         href: "/product",
                                                         onClick: handleLinkClick,
-                                                        children: "01. Unbody"
+                                                        children: "01. Halter Neck Ruched Red Gown"
                                                     }, void 0, false, {
                                                         fileName: "[project]/src/components/Menu/Menu.jsx",
-                                                        lineNumber: 360,
+                                                        lineNumber: 337,
                                                         columnNumber: 17
                                                     }, ("TURBOPACK compile-time value", void 0)),
                                                     /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$client$2f$app$2d$dir$2f$link$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["default"], {
                                                         href: "/product",
                                                         onClick: handleLinkClick,
-                                                        children: "02. Persona Null"
+                                                        children: "02. Velvet Plunge Dress"
                                                     }, void 0, false, {
                                                         fileName: "[project]/src/components/Menu/Menu.jsx",
-                                                        lineNumber: 363,
+                                                        lineNumber: 340,
                                                         columnNumber: 17
                                                     }, ("TURBOPACK compile-time value", void 0)),
                                                     /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$client$2f$app$2d$dir$2f$link$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["default"], {
                                                         href: "/product",
                                                         onClick: handleLinkClick,
-                                                        children: "03. Second Host"
+                                                        children: "03. Amelia Bag — Burgundy"
                                                     }, void 0, false, {
                                                         fileName: "[project]/src/components/Menu/Menu.jsx",
-                                                        lineNumber: 366,
+                                                        lineNumber: 343,
                                                         columnNumber: 17
                                                     }, ("TURBOPACK compile-time value", void 0)),
                                                     /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$client$2f$app$2d$dir$2f$link$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["default"], {
                                                         href: "/product",
                                                         onClick: handleLinkClick,
-                                                        children: "04. Shellcode"
+                                                        children: "04. Ivory Muse Mini Dress"
                                                     }, void 0, false, {
                                                         fileName: "[project]/src/components/Menu/Menu.jsx",
-                                                        lineNumber: 369,
+                                                        lineNumber: 346,
                                                         columnNumber: 17
                                                     }, ("TURBOPACK compile-time value", void 0))
                                                 ]
                                             }, void 0, true, {
                                                 fileName: "[project]/src/components/Menu/Menu.jsx",
-                                                lineNumber: 359,
+                                                lineNumber: 336,
                                                 columnNumber: 15
                                             }, ("TURBOPACK compile-time value", void 0))
                                         ]
                                     }, void 0, true, {
                                         fileName: "[project]/src/components/Menu/Menu.jsx",
-                                        lineNumber: 355,
+                                        lineNumber: 332,
                                         columnNumber: 13
                                     }, ("TURBOPACK compile-time value", void 0))
                                 ]
                             }, void 0, true, {
                                 fileName: "[project]/src/components/Menu/Menu.jsx",
-                                lineNumber: 338,
+                                lineNumber: 315,
                                 columnNumber: 11
                             }, ("TURBOPACK compile-time value", void 0))
                         ]
                     }, void 0, true, {
                         fileName: "[project]/src/components/Menu/Menu.jsx",
-                        lineNumber: 309,
+                        lineNumber: 286,
                         columnNumber: 9
                     }, ("TURBOPACK compile-time value", void 0)),
                     /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
@@ -655,73 +627,73 @@ const Menu = ()=>{
                             /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
                                 className: "menu-social",
                                 children: /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("a", {
-                                    href: "https://x.com/codegridweb",
-                                    target: "_blank",
-                                    rel: "noopener noreferrer",
-                                    onClick: handleLinkClick,
-                                    children: "Twitter"
-                                }, void 0, false, {
-                                    fileName: "[project]/src/components/Menu/Menu.jsx",
-                                    lineNumber: 378,
-                                    columnNumber: 13
-                                }, ("TURBOPACK compile-time value", void 0))
-                            }, void 0, false, {
-                                fileName: "[project]/src/components/Menu/Menu.jsx",
-                                lineNumber: 377,
-                                columnNumber: 11
-                            }, ("TURBOPACK compile-time value", void 0)),
-                            /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
-                                className: "menu-social",
-                                children: /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("a", {
-                                    href: "https://www.instagram.com/codegridweb/",
+                                    href: "https://www.instagram.com/ohmydress.store/",
                                     target: "_blank",
                                     rel: "noopener noreferrer",
                                     onClick: handleLinkClick,
                                     children: "Instagram"
                                 }, void 0, false, {
                                     fileName: "[project]/src/components/Menu/Menu.jsx",
-                                    lineNumber: 388,
+                                    lineNumber: 355,
                                     columnNumber: 13
                                 }, ("TURBOPACK compile-time value", void 0))
                             }, void 0, false, {
                                 fileName: "[project]/src/components/Menu/Menu.jsx",
-                                lineNumber: 387,
+                                lineNumber: 354,
                                 columnNumber: 11
                             }, ("TURBOPACK compile-time value", void 0)),
                             /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
                                 className: "menu-social",
                                 children: /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("a", {
-                                    href: "https://www.youtube.com/@codegrid",
+                                    href: "https://www.tiktok.com/@ohmydress",
                                     target: "_blank",
                                     rel: "noopener noreferrer",
                                     onClick: handleLinkClick,
-                                    children: "YouTube"
+                                    children: "TikTok"
                                 }, void 0, false, {
                                     fileName: "[project]/src/components/Menu/Menu.jsx",
-                                    lineNumber: 398,
+                                    lineNumber: 365,
                                     columnNumber: 13
                                 }, ("TURBOPACK compile-time value", void 0))
                             }, void 0, false, {
                                 fileName: "[project]/src/components/Menu/Menu.jsx",
-                                lineNumber: 397,
+                                lineNumber: 364,
+                                columnNumber: 11
+                            }, ("TURBOPACK compile-time value", void 0)),
+                            /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
+                                className: "menu-social",
+                                children: /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("a", {
+                                    href: "mailto:hello@ohmydress.ro",
+                                    target: "_blank",
+                                    rel: "noopener noreferrer",
+                                    onClick: handleLinkClick,
+                                    children: "Email"
+                                }, void 0, false, {
+                                    fileName: "[project]/src/components/Menu/Menu.jsx",
+                                    lineNumber: 375,
+                                    columnNumber: 13
+                                }, ("TURBOPACK compile-time value", void 0))
+                            }, void 0, false, {
+                                fileName: "[project]/src/components/Menu/Menu.jsx",
+                                lineNumber: 374,
                                 columnNumber: 11
                             }, ("TURBOPACK compile-time value", void 0))
                         ]
                     }, void 0, true, {
                         fileName: "[project]/src/components/Menu/Menu.jsx",
-                        lineNumber: 376,
+                        lineNumber: 353,
                         columnNumber: 9
                     }, ("TURBOPACK compile-time value", void 0))
                 ]
             }, void 0, true, {
                 fileName: "[project]/src/components/Menu/Menu.jsx",
-                lineNumber: 308,
+                lineNumber: 285,
                 columnNumber: 7
             }, ("TURBOPACK compile-time value", void 0))
         ]
     }, void 0, true, {
         fileName: "[project]/src/components/Menu/Menu.jsx",
-        lineNumber: 297,
+        lineNumber: 274,
         columnNumber: 5
     }, ("TURBOPACK compile-time value", void 0));
 };
@@ -737,384 +709,214 @@ if (typeof globalThis.$RefreshHelpers$ === 'object' && globalThis.$RefreshHelper
 "[project]/src/app/wardrobe/products.js [app-client] (ecmascript)", ((__turbopack_context__) => {
 "use strict";
 
+// Products mirror the live OhMyDress catalogue: dresses + Italian leather bags.
+// Images are served from the OhMyDress Shopify CDN.
 __turbopack_context__.s([
     "products",
     ()=>products
 ]);
 const products = [
     {
-        name: "Unit 01",
-        price: "180",
+        name: "Black Deep V Dress",
+        price: "149",
         color: "Black",
-        tag: "Deform",
+        tag: "Dresses",
         sizes: [
             "S",
             "M",
             "L",
             "XL"
         ],
-        description: "A modular black outer shell engineered with rigid layering and precision cuts—ideal for urban climates, built to disappear in low light."
+        image: "https://ohmydress.store/cdn/shop/files/IMG_1531.jpg?v=1764368658&width=900",
+        description: "A sculpted black mini dress with a daring deep V-neckline. Cut to hug the silhouette, finished with a fluid drape that moves with you."
     },
     {
-        name: "Phase Field",
-        price: "160",
-        color: "Stone",
-        tag: "Sheerform",
-        sizes: [
-            "M",
-            "L",
-            "XL"
-        ],
-        description: "Field-ready modular wear in stone tones, featuring directional seams and a draped silhouette for fluid movement across environments."
-    },
-    {
-        name: "Subzero",
-        price: "190",
-        color: "Ice",
-        tag: "Functionary",
+        name: "Halter Neck Ruched Red Gown",
+        price: "229",
+        color: "Red",
+        tag: "Dresses",
         sizes: [
             "S",
             "M",
             "L"
         ],
-        description: "Lightweight jacket in a subtle ice tone, crafted for colder atmospheres with breathable construction and quiet futurism at its core."
+        image: "https://ohmydress.store/cdn/shop/files/IMG_2715.jpg?v=1765380874&width=900",
+        description: "A statement red gown with halter neck and architectural ruching. Designed to command the room, made to be remembered."
     },
     {
-        name: "Echo Pattern",
-        price: "140",
-        color: "Grey",
-        tag: "Deform",
-        sizes: [
-            "M",
-            "L",
-            "XL",
-            "XXL"
-        ],
-        description: "Textured grey layering piece with soft distortion surface details and a neutral aesthetic calibrated for motion and utility."
-    },
-    {
-        name: "Soft Matter",
-        price: "120",
-        color: "White",
-        tag: "Sheerform",
-        sizes: [
-            "S",
-            "M",
-            "L"
-        ],
-        description: "Minimal white layer with soft-shell build and structural flow, balancing technical lines with fluid fabric motion."
-    },
-    {
-        name: "Ghostwear",
-        price: "185",
-        color: "White",
-        tag: "Functionary",
-        sizes: [
-            "M",
-            "L",
-            "XL"
-        ],
-        description: "Translucent white shell with matte tonal overlays—built for minimal visibility and sensory softness across temperature shifts."
-    },
-    {
-        name: "Core Module",
-        price: "150",
-        color: "Stone",
-        tag: "Deform",
-        sizes: [
-            "S",
-            "M",
-            "L",
-            "XL"
-        ],
-        description: "Stone-layered midweight core piece with minimal branding, modular attachments, and internal system paneling."
-    },
-    {
-        name: "Persona Null",
-        price: "175",
-        color: "Black",
-        tag: "Sheerform",
-        sizes: [
-            "M",
-            "L",
-            "XL"
-        ],
-        description: "Anti-identity outerwear in blackout, asymmetric cut lines and concealed fastenings—designed for detachment and drift."
-    },
-    {
-        name: "Axis Drift",
-        price: "165",
-        color: "Grey",
-        tag: "Functionary",
-        sizes: [
-            "S",
-            "M",
-            "L"
-        ],
-        description: "A soft grey utility form built to wrap and reorient on body movement, echoing collapse and stretch in motion."
-    },
-    {
-        name: "Patch v0.2",
-        price: "110",
-        color: "White",
-        tag: "Deform",
-        sizes: [
-            "M",
-            "L",
-            "XL"
-        ],
-        description: "Crisp white form with adaptive panel layout and micro utility pockets—a prototype layer made for future rewrites."
-    },
-    {
-        name: "Relay Shell",
-        price: "145",
-        color: "Black",
-        tag: "Sheerform",
-        sizes: [
-            "S",
-            "M",
-            "L"
-        ],
-        description: "Shadow black outer with reactive fabric and structural folds, constructed to bypass signal and retain warmth."
-    },
-    {
-        name: "Clone Form",
-        price: "130",
-        color: "Ice",
-        tag: "Functionary",
-        sizes: [
-            "S",
-            "M",
-            "L",
-            "XL"
-        ],
-        description: "Icy neutral silhouette with reflective accents and reversible construction—a dual-form expression of adaptive layering."
-    },
-    {
-        name: "Cold Proxy",
-        price: "155",
-        color: "Grey",
-        tag: "Deform",
-        sizes: [
-            "M",
-            "L",
-            "XL"
-        ],
-        description: "Soft grey insulated layer mimicking cold tactility, designed for semi-static zones and low interaction corridors."
-    },
-    {
-        name: "Frame Shift",
-        price: "160",
-        color: "Stone",
-        tag: "Sheerform",
-        sizes: [
-            "S",
-            "M",
-            "L",
-            "XL"
-        ],
-        description: "Stone-finished body with angular overlay panels and modular zip-outs—built to reconfigure with each movement frame."
-    },
-    {
-        name: "Veil Unit",
-        price: "175",
-        color: "Ice",
-        tag: "Functionary",
-        sizes: [
-            "S",
-            "M",
-            "L"
-        ],
-        description: "Semi-translucent layering piece in soft ice, designed for concealment and diffusion—ideal for fragmented lighting and modular outfitting."
-    },
-    {
-        name: "Null Form",
-        price: "165",
-        color: "Black",
-        tag: "Deform",
-        sizes: [
-            "S",
-            "M",
-            "L",
-            "XL"
-        ],
-        description: "An all-black uniform shell stripped of markings, with dimensional construction lines and an identity-less profile made for clean resets."
-    },
-    {
-        name: "Infra Veil",
-        price: "170",
-        color: "White",
-        tag: "Sheerform",
+        name: "Blue Stardust Halter Dress",
+        price: "189",
+        color: "Blue",
+        tag: "Dresses",
         sizes: [
             "XS",
             "S",
             "M",
             "L"
         ],
-        description: "A radiant white coat with subtle sublayer seams and soft mirrored accents, designed for high-contrast atmospheres and neutral layering."
+        image: "https://ohmydress.store/cdn/shop/files/IMG_1623.jpg?v=1764369017&width=900",
+        description: "Hand-embellished sequin halter dress in midnight blue. Catches every flicker of light, holds attention without effort."
     },
     {
-        name: "Zone Artifact",
-        price: "185",
-        color: "Stone",
-        tag: "Functionary",
-        sizes: [
-            "S",
-            "M",
-            "L",
-            "XL"
-        ],
-        description: "Stone-colored soft-armor inspired shell jacket with reactive texture zones, adaptive stitch mapping, and tonal fracture lines."
-    },
-    {
-        name: "Shellcode",
-        price: "160",
-        color: "Grey",
-        tag: "Deform",
-        sizes: [
-            "S",
-            "M",
-            "L"
-        ],
-        description: "Neutral grey long-form with sealed placket, hidden entry points, and binary stitch overlays—built like code, worn like static."
-    },
-    {
-        name: "Second Host",
-        price: "150",
-        color: "Ice",
-        tag: "Sheerform",
-        sizes: [
-            "S",
-            "M",
-            "L"
-        ],
-        description: "Pale ice-toned skinwear form with low-profile cuffs and a neutral inner mesh—softly modular, designed for second-layer performance."
-    },
-    {
-        name: "Noir Signal",
-        price: "190",
+        name: "Black Stardust Halter Dress",
+        price: "189",
         color: "Black",
-        tag: "Functionary",
-        sizes: [
-            "M",
-            "L",
-            "XL"
-        ],
-        description: "Deep black statement outerwear with curved overlay paneling and signal-suppressed design for quiet visual presence in charged spaces."
-    },
-    {
-        name: "Dust Layer",
-        price: "142",
-        color: "Stone",
-        tag: "Deform",
+        tag: "Dresses",
         sizes: [
             "XS",
             "S",
             "M",
             "L"
         ],
-        description: "Low-movement layer in muted stone, cut with angular drop sleeves and a dust-soft finish that breaks light across the body."
+        image: "https://ohmydress.store/cdn/shop/files/IMG_1617.jpg?v=1764368834&width=900",
+        description: "Sequin-embroidered halter in deep black. Sleek lines, soft drape — quiet glamour engineered for long evenings."
     },
     {
-        name: "Greycode",
-        price: "158",
-        color: "Grey",
-        tag: "Sheerform",
+        name: "Terracotta Deep V Dress",
+        price: "129",
+        color: "Terracotta",
+        tag: "Dresses",
         sizes: [
             "S",
             "M",
             "L",
             "XL"
         ],
-        description: "A soft technical shell in neutral grey with encoded vent seams and microstructured collar—functionality compressed into silence."
+        image: "https://ohmydress.store/cdn/shop/files/IMG_1198.jpg?v=1764330973&width=900",
+        description: "Warm terracotta mini with a plunging V-neck and figure-skimming cut. A modern take on the seasonal essential."
     },
     {
-        name: "Unbody",
-        price: "170",
+        name: "Seraphine Noir Dress",
+        price: "159",
         color: "Black",
-        tag: "Functionary",
+        tag: "Dresses",
         sizes: [
             "S",
             "M",
             "L"
         ],
-        description: "A blackout top-layer with sculpted tension zones and minimal profile, designed to disappear under low contrast and diffuse edge."
+        image: "https://ohmydress.store/cdn/shop/files/IMG_0590.jpg?v=1775580806&width=900",
+        description: "An ethereal black dress with refined draping and an elongated silhouette. Designed for the woman who chooses to stand out."
     },
     {
-        name: "Pale Shard",
-        price: "145",
-        color: "White",
-        tag: "Deform",
-        sizes: [
-            "S",
-            "M",
-            "L",
-            "XL"
-        ],
-        description: "Crisp white topcoat with shard-line darting and a nearly frameless silhouette that refracts form without reflecting structure."
-    },
-    {
-        name: "Static Mist",
-        price: "135",
-        color: "Grey",
-        tag: "Sheerform",
-        sizes: [
-            "M",
-            "L",
-            "XL"
-        ],
-        description: "Grey-toned wind layer with interference-resistant fiber blend, shaped to disrupt silhouettes in motion and dissolve into atmosphere."
-    },
-    {
-        name: "Ghost Line",
-        price: "155",
-        color: "Ice",
-        tag: "Functionary",
-        sizes: [
-            "S",
-            "M",
-            "L",
-            "XL"
-        ],
-        description: "Pale minimal field uniform in ice, defined by seamless construction and directional venting for high fluidity across movement zones."
-    },
-    {
-        name: "Phantom Skin",
-        price: "165",
-        color: "White",
-        tag: "Deform",
+        name: "Ivory Muse Mini Dress",
+        price: "179",
+        color: "Ivory",
+        tag: "Dresses",
         sizes: [
             "XS",
             "S",
             "M",
             "L"
         ],
-        description: "High-density lightweight outer layer in white, designed with anatomical panel flow and soft-reactive pressure folds across spine line."
+        image: "https://ohmydress.store/cdn/shop/files/IMG_0582.jpg?v=1775580501&width=900",
+        description: "A romantic ivory mini with sculpted bodice and soft skirt. Bridal-adjacent, occasion-ready, effortlessly luminous."
     },
     {
-        name: "Overcast Proxy",
-        price: "150",
-        color: "Grey",
-        tag: "Sheerform",
+        name: "Black Sculpt Tailored Suit",
+        price: "249",
+        color: "Black",
+        tag: "Dresses",
         sizes: [
             "S",
             "M",
             "L"
         ],
-        description: "Neutral grey proxy fit with curved arms and fog-treated finish—built for ghosted movement across filtered daylight corridors."
+        image: "https://ohmydress.store/cdn/shop/files/solero-2529.jpg?v=1764369346&width=900",
+        description: "A sharply tailored black suit cut for power and presence. Sculpted shoulders, clean lines, an heirloom-quality finish."
     },
     {
-        name: "Neutral Drift",
-        price: "165",
-        color: "Black",
-        tag: "Functionary",
+        name: "Suede Tote Bag — Burgundy",
+        price: "339",
+        color: "Burgundy",
+        tag: "Bags",
         sizes: [
+            "One Size"
+        ],
+        image: "https://ohmydress.store/cdn/shop/files/IMG_0070.jpg?v=1765383226&width=900",
+        description: "Genuine Italian suede tote in deep burgundy with a contrast red interior. Handcrafted to outlive trends."
+    },
+    {
+        name: "Suede Tote Bag — Camel",
+        price: "339",
+        color: "Camel",
+        tag: "Bags",
+        sizes: [
+            "One Size"
+        ],
+        image: "https://ohmydress.store/cdn/shop/files/IMG_0058.jpg?v=1765383080&width=900",
+        description: "Soft Italian suede tote in warm camel with crimson lining. Roomy, structured, made to be lived in."
+    },
+    {
+        name: "Amelia Bag — Taupe",
+        price: "279",
+        color: "Camel",
+        tag: "Bags",
+        sizes: [
+            "One Size"
+        ],
+        image: "https://ohmydress.store/cdn/shop/files/IMG_3068_b5d50aea-f65e-45e2-8108-4969b2d1bcce.jpg?v=1766854095&width=900",
+        description: "Petite shoulder bag crafted from genuine Italian leather in muted taupe. A timeless silhouette, refined for daily use."
+    },
+    {
+        name: "Amelia Bag — Burgundy",
+        price: "279",
+        color: "Burgundy",
+        tag: "Bags",
+        sizes: [
+            "One Size"
+        ],
+        image: "https://ohmydress.store/cdn/shop/files/IMG_3072.jpg?v=1766854188&width=900",
+        description: "The Amelia in deep burgundy leather. Subtle hardware, soft-grain finish, tailored to elevate any look."
+    },
+    {
+        name: "Suede Heart-Shaped Bag — Taupe",
+        price: "229",
+        color: "Camel",
+        tag: "Bags",
+        sizes: [
+            "One Size"
+        ],
+        image: "https://ohmydress.store/cdn/shop/files/IMG_0141.jpg?v=1765382873&width=900",
+        description: "A romantic heart-shaped suede bag in soft taupe. Italian craftsmanship with a poetic silhouette."
+    },
+    {
+        name: "Suede Heart-Shaped Bag — Camel",
+        price: "229",
+        color: "Camel",
+        tag: "Bags",
+        sizes: [
+            "One Size"
+        ],
+        image: "https://ohmydress.store/cdn/shop/files/IMG_3704.jpg?v=1765382118&width=900",
+        description: "Heart-shaped Italian suede bag in warm camel. A small statement piece with real character."
+    },
+    {
+        name: "Velvet Plunge Dress",
+        price: "199",
+        color: "Burgundy",
+        tag: "Dresses",
+        sizes: [
+            "XS",
             "S",
             "M",
-            "L",
-            "XL"
+            "L"
         ],
-        description: "Minimal black utility form with adaptive paneling and neutral drift construction—designed for seamless integration across environments."
+        image: "https://ohmydress.store/cdn/shop/files/IMG_2827.jpg?v=1765537119&width=900",
+        description: "Liquid velvet dress in rich burgundy with a deep plunge neckline. Sensual, structured, made for entrances."
+    },
+    {
+        name: "Crystal Mesh Mini",
+        price: "219",
+        color: "Black",
+        tag: "Dresses",
+        sizes: [
+            "XS",
+            "S",
+            "M"
+        ],
+        image: "https://ohmydress.store/cdn/shop/files/IMG_1624.jpg?v=1764368959&width=900",
+        description: "A glittering mesh mini covered in crystal embellishment. Designed to catch every light in the room."
     }
 ];
 if (typeof globalThis.$RefreshHelpers$ === 'object' && globalThis.$RefreshHelpers !== null) {
@@ -1261,7 +1063,7 @@ const ShoppingCart = ()=>{
                 children: [
                     /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("span", {
                         className: "cart-icon",
-                        children: "BAG"
+                        children: "Bag"
                     }, void 0, false, {
                         fileName: "[project]/src/components/ShoppingCart/ShoppingCart.jsx",
                         lineNumber: 33,
@@ -1345,7 +1147,9 @@ const ShoppingCart = ()=>{
                                 lineNumber: 70,
                                 columnNumber: 15
                             }, ("TURBOPACK compile-time value", void 0)) : cartItems.map((item, index)=>{
+                                const matchingProduct = __TURBOPACK__imported__module__$5b$project$5d2f$src$2f$app$2f$wardrobe$2f$products$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["products"].find((p)=>p.name === item.name);
                                 const productIndex = __TURBOPACK__imported__module__$5b$project$5d2f$src$2f$app$2f$wardrobe$2f$products$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["products"].findIndex((p)=>p.name === item.name) + 1;
+                                const imgSrc = item.image || matchingProduct?.image || `/products/product_${productIndex}.png`;
                                 const quantity = Number(item.quantity) || 1;
                                 return /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
                                     className: "cart-item",
@@ -1353,16 +1157,16 @@ const ShoppingCart = ()=>{
                                         /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
                                             className: "cart-item-image",
                                             children: /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("img", {
-                                                src: `/products/product_${productIndex}.png`,
+                                                src: imgSrc,
                                                 alt: item.name
                                             }, void 0, false, {
                                                 fileName: "[project]/src/components/ShoppingCart/ShoppingCart.jsx",
-                                                lineNumber: 81,
+                                                lineNumber: 88,
                                                 columnNumber: 23
                                             }, ("TURBOPACK compile-time value", void 0))
                                         }, void 0, false, {
                                             fileName: "[project]/src/components/ShoppingCart/ShoppingCart.jsx",
-                                            lineNumber: 80,
+                                            lineNumber: 87,
                                             columnNumber: 21
                                         }, ("TURBOPACK compile-time value", void 0)),
                                         /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
@@ -1376,7 +1180,7 @@ const ShoppingCart = ()=>{
                                                             children: item.name
                                                         }, void 0, false, {
                                                             fileName: "[project]/src/components/ShoppingCart/ShoppingCart.jsx",
-                                                            lineNumber: 88,
+                                                            lineNumber: 92,
                                                             columnNumber: 25
                                                         }, ("TURBOPACK compile-time value", void 0)),
                                                         quantity > 1 && /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("span", {
@@ -1384,24 +1188,24 @@ const ShoppingCart = ()=>{
                                                             children: quantity
                                                         }, void 0, false, {
                                                             fileName: "[project]/src/components/ShoppingCart/ShoppingCart.jsx",
-                                                            lineNumber: 90,
+                                                            lineNumber: 94,
                                                             columnNumber: 27
                                                         }, ("TURBOPACK compile-time value", void 0))
                                                     ]
                                                 }, void 0, true, {
                                                     fileName: "[project]/src/components/ShoppingCart/ShoppingCart.jsx",
-                                                    lineNumber: 87,
+                                                    lineNumber: 91,
                                                     columnNumber: 23
                                                 }, ("TURBOPACK compile-time value", void 0)),
                                                 /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("p", {
                                                     className: "cart-item-price",
                                                     children: [
-                                                        "$",
-                                                        item.price
+                                                        item.price,
+                                                        " lei"
                                                     ]
                                                 }, void 0, true, {
                                                     fileName: "[project]/src/components/ShoppingCart/ShoppingCart.jsx",
-                                                    lineNumber: 93,
+                                                    lineNumber: 97,
                                                     columnNumber: 23
                                                 }, ("TURBOPACK compile-time value", void 0)),
                                                 /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("button", {
@@ -1410,19 +1214,19 @@ const ShoppingCart = ()=>{
                                                     children: "Remove"
                                                 }, void 0, false, {
                                                     fileName: "[project]/src/components/ShoppingCart/ShoppingCart.jsx",
-                                                    lineNumber: 94,
+                                                    lineNumber: 98,
                                                     columnNumber: 23
                                                 }, ("TURBOPACK compile-time value", void 0))
                                             ]
                                         }, void 0, true, {
                                             fileName: "[project]/src/components/ShoppingCart/ShoppingCart.jsx",
-                                            lineNumber: 86,
+                                            lineNumber: 90,
                                             columnNumber: 21
                                         }, ("TURBOPACK compile-time value", void 0))
                                     ]
                                 }, `${item.name}-${index}`, true, {
                                     fileName: "[project]/src/components/ShoppingCart/ShoppingCart.jsx",
-                                    lineNumber: 79,
+                                    lineNumber: 86,
                                     columnNumber: 19
                                 }, ("TURBOPACK compile-time value", void 0));
                             })
@@ -1441,23 +1245,23 @@ const ShoppingCart = ()=>{
                                             children: "Total"
                                         }, void 0, false, {
                                             fileName: "[project]/src/components/ShoppingCart/ShoppingCart.jsx",
-                                            lineNumber: 109,
+                                            lineNumber: 113,
                                             columnNumber: 17
                                         }, ("TURBOPACK compile-time value", void 0)),
                                         /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("span", {
                                             children: [
-                                                "$",
-                                                subtotal.toFixed(2)
+                                                subtotal.toFixed(2),
+                                                " lei"
                                             ]
                                         }, void 0, true, {
                                             fileName: "[project]/src/components/ShoppingCart/ShoppingCart.jsx",
-                                            lineNumber: 110,
+                                            lineNumber: 114,
                                             columnNumber: 17
                                         }, ("TURBOPACK compile-time value", void 0))
                                     ]
                                 }, void 0, true, {
                                     fileName: "[project]/src/components/ShoppingCart/ShoppingCart.jsx",
-                                    lineNumber: 108,
+                                    lineNumber: 112,
                                     columnNumber: 15
                                 }, ("TURBOPACK compile-time value", void 0)),
                                 /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("button", {
@@ -1465,13 +1269,13 @@ const ShoppingCart = ()=>{
                                     children: "Checkout"
                                 }, void 0, false, {
                                     fileName: "[project]/src/components/ShoppingCart/ShoppingCart.jsx",
-                                    lineNumber: 112,
+                                    lineNumber: 116,
                                     columnNumber: 15
                                 }, ("TURBOPACK compile-time value", void 0))
                             ]
                         }, void 0, true, {
                             fileName: "[project]/src/components/ShoppingCart/ShoppingCart.jsx",
-                            lineNumber: 107,
+                            lineNumber: 111,
                             columnNumber: 13
                         }, ("TURBOPACK compile-time value", void 0))
                     ]

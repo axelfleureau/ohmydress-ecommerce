@@ -6,20 +6,24 @@ const ContactForm = () => {
   return (
     <section className="contact-form">
       <div className="contact-parallax-image-wrapper">
-        <h1>Nrmlss</h1>
-        <img src="/contact-form/contact-parallax.png" alt="" />
+        <h1>OhMyDress</h1>
+        <img
+          src="https://ohmydress.store/cdn/shop/files/IMG_2827.jpg?v=1765537119&width=1600"
+          alt=""
+        />
       </div>
       <div className="contact-form-container">
         <div className="cf-header">
-          <h4>Transmit updates, not noise.</h4>
+          <h4>Be the first to know.</h4>
         </div>
         <div className="cf-copy">
           <p className="bodyCopy sm">
-            You’ll only hear from us when something built is worth showing.
+            Sign up to receive early access to new releases, private drops and
+            exclusive offers.
           </p>
         </div>
         <div className="cf-input">
-          <input type="text" placeholder="Enter Signal Address" />
+          <input type="email" placeholder="Enter your email" />
         </div>
         <div className="cf-submit">
           <MdOutlineArrowOutward />
@@ -28,7 +32,7 @@ const ContactForm = () => {
           <div className="cf-divider"></div>
           <div className="cf-footer-copy">
             <p className="bodyCopy sm">
-              No marketing cycles. Just rare, coded dispatches.
+              No spam. Just rare, beautifully crafted updates.
             </p>
           </div>
         </div>

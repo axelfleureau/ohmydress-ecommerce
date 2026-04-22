@@ -120,37 +120,40 @@ export default function Genesis() {
 
       <section className="genesis-hero">
         <div className="gen-hero-img">
-          <img src="/genesis/hero.jpg" alt="" />
+          <img
+            src="https://ohmydress.store/cdn/shop/files/IMG_0784.jpg?v=1760356962&width=1600"
+            alt=""
+          />
         </div>
         <div className="container">
           <div className="gen-hero-copy">
             <Copy animateOnScroll={false} delay={0.7} type="flicker">
-              <p>Signal over surplus,</p>
-              <p>Fragments of identity,</p>
-              <p>Minimal by necessity.</p>
+              <p>Sensuality, elegance,</p>
+              <p>Italian craftsmanship,</p>
+              <p>Limited by design.</p>
             </Copy>
           </div>
           <div className="gen-hero-copy">
             <Copy animateOnScroll={false} delay={0.8} type="flicker">
-              <p>We design future forms,</p>
-              <p>Built for the now.</p>
+              <p>Made for the woman</p>
+              <p>Who chooses to stand out.</p>
             </Copy>
           </div>
           <div className="gen-hero-copy">
             <Copy animateOnScroll={false} delay={0.7}>
-              <h1>The Genesis behind what you wear</h1>
+              <h1>The story behind every piece</h1>
             </Copy>
             <div className="gen-hero-meta">
               <div className="gen-hero-meta-block">
                 <Copy animateOnScroll={false} delay={0.9} type="flicker">
-                  <p>We create frameworks,</p>
-                  <p>For the unnamed future,</p>
-                  <p>A study in silhouette.</p>
+                  <p>We design garments,</p>
+                  <p>That are meant to last,</p>
+                  <p>A study in elegance.</p>
                 </Copy>
               </div>
               <div className="gen-hero-meta-block">
                 <Copy animateOnScroll={false} delay={1} type="flicker">
-                  <p>[ SYS/NRMLSS/0001 ]</p>
+                  <p>[ OhMyDress / Est. 2024 ]</p>
                 </Copy>
               </div>
             </div>
@@ -161,24 +164,23 @@ export default function Genesis() {
       <section className="genesis-about">
         <div className="container">
           <div className="genesis-about-logo">
-            <BrandIcon fill="#0f0f0f" />
+            <BrandIcon fill="#0d0d0d" />
           </div>
           <div className="genesis-about-copy">
             <Copy>
               <h4>
-                NRMLSS is built on the belief that clothing should operate like
-                a system. Every piece is engineered with intention, shaped by
-                visual logic and designed for a new kind of uniform. We define
-                motion, structure in silence, presence without noise.
+                OhMyDress is built on the belief that what you wear should
+                celebrate who you are. Every dress is engineered with intention,
+                shaped by elegant lines and designed to make you feel
+                unmistakably yourself — sensual, confident, in control.
               </h4>
             </Copy>
             <Copy>
               <h4 delay={0.5}>
-                Our aesthetic roots lie in the future, not the past. We create
-                garments that behave like interfaces: minimal, intelligent,
-                quietly expressive. Function and form are synchronized, tailored
-                for those who move through digital and physical layers with
-                equal precision. NRMLSS is not fashion. It is a transmission.
+                Our bags are crafted from genuine Italian leather, with timeless
+                lines and refined details. Each piece reflects the excellence of
+                Made in Italy craftsmanship — combining style, quality and
+                sophistication in objects meant to be loved for a lifetime.
               </h4>
             </Copy>
           </div>

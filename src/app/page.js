@@ -33,7 +33,8 @@ export default function Index() {
   };
 
   useEffect(() => {
-    const shuffled = [...products].sort(() => 0.5 - Math.random());
+    const dresses = products.filter((p) => p.tag === "Dresses");
+    const shuffled = [...dresses].sort(() => 0.5 - Math.random());
     setFeaturedProducts(shuffled.slice(0, 4));
   }, []);
 
@@ -66,21 +67,24 @@ export default function Index() {
 
       <section className="hero" ref={heroSectionRef}>
         <DotMatrix
-          color="#969992"
+          color="#a89884"
           dotSize={2}
           spacing={5}
-          opacity={0.9}
+          opacity={0.6}
           delay={isInitialLoad ? 6 : 1.125}
         />
         <div className="container">
           <div className="hero-header" ref={heroHeaderRef}>
             <Copy animateOnScroll={false} delay={isInitialLoad ? 5.5 : 0.65}>
-              <h1>Silhouettes for the Next Era</h1>
+              <h1>Dress it like you own it</h1>
             </Copy>
           </div>
         </div>
         <div className="hero-img" ref={heroImgRef}>
-          <img src="/home/hero.png" alt="" />
+          <img
+            src="https://ohmydress.store/cdn/shop/files/IMG_2827.jpg?v=1765537119&width=1600"
+            alt="OhMyDress hero"
+          />
         </div>
         <div className="section-footer">
           <Copy
@@ -88,14 +92,14 @@ export default function Index() {
             delay={isInitialLoad ? 7.5 : 0.65}
             animateOnScroll={false}
           >
-            <p>Void Index</p>
+            <p>New Releases</p>
           </Copy>
           <Copy
             type="flicker"
             delay={isInitialLoad ? 7.5 : 0.65}
             animateOnScroll={false}
           >
-            <p>Model v.23</p>
+            <p>Winter 2026</p>
           </Copy>
         </div>
       </section>
@@ -104,12 +108,12 @@ export default function Index() {
         <div className="container">
           <div className="about-copy">
             <Copy type="flicker">
-              <p>Clothing reduced to pure signal</p>
+              <p>Limited-edition luxury</p>
             </Copy>
             <Copy>
               <h3>
-                Our collections are built for the frictionless, the fast, and
-                the quietly defiant.
+                Each drop is unique — designed to last a lifetime, made for
+                women who choose to stand out.
               </h3>
             </Copy>
             <div className="about-icon">
@@ -119,7 +123,7 @@ export default function Index() {
         </div>
         <div className="section-footer light">
           <Copy type="flicker">
-            <p>/ Core State /</p>
+            <p>/ Made in Italy /</p>
           </Copy>
         </div>
       </section>
@@ -128,11 +132,11 @@ export default function Index() {
         <div className="container">
           <div className="featured-products-header">
             <Copy type="flicker">
-              <p>Featured Units</p>
+              <p>Featured Pieces</p>
             </Copy>
             <Copy>
               <h3>
-                Selected <br /> Garments
+                Selected <br /> Dresses
               </h3>
             </Copy>
           </div>
@@ -140,10 +144,10 @@ export default function Index() {
             <div className="featured-products-divider"></div>
             <div className="featured-products-labels">
               <Copy type="flicker">
-                <p>Primary Set</p>
+                <p>New Releases</p>
               </Copy>
               <Copy type="flicker">
-                <Link href="/wardrobe">View Archive</Link>
+                <Link href="/wardrobe">Shop the Collection</Link>
               </Copy>
             </div>
           </div>
