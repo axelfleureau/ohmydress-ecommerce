@@ -22,15 +22,10 @@ import { useGSAP } from "@gsap/react";
 gsap.registerPlugin(ScrollTrigger);
 
 export default function Index() {
-  const [loaderAnimating, setLoaderAnimating] = useState(isInitialLoad);
   const [featuredProducts, setFeaturedProducts] = useState([]);
   const heroImgRef = useRef(null);
   const heroHeaderRef = useRef(null);
   const heroSectionRef = useRef(null);
-
-  const handlePreloaderComplete = () => {
-    setLoaderAnimating(false);
-  };
 
   useEffect(() => {
     const dresses = products.filter((p) => p.tag === "Dresses");
@@ -53,6 +48,18 @@ export default function Index() {
       }
     );
 
+    gsap.fromTo(
+      heroHeaderRef.current,
+      { y: 60, opacity: 0 },
+      {
+        y: 0,
+        opacity: 1,
+        duration: 1.1,
+        ease: "power3.out",
+        delay: isInitialLoad ? 5.4 : 0.2,
+      }
+    );
+
     gsap.to(heroHeaderRef.current, {
       y: 150,
       ease: "none",
@@ -67,7 +74,7 @@ export default function Index() {
 
   return (
     <>
-      <Preloader onAnimationComplete={handlePreloaderComplete} />
+      <Preloader />
 
       <section className="hero" ref={heroSectionRef}>
         <DotMatrix
@@ -79,9 +86,7 @@ export default function Index() {
         />
         <div className="container">
           <div className="hero-header" ref={heroHeaderRef}>
-            <Copy animateOnScroll={false} delay={isInitialLoad ? 5.5 : 0.65}>
-              <h1>Dress it like you own it</h1>
-            </Copy>
+            <h1>Dress it like you own it</h1>
           </div>
         </div>
         <div className="hero-img" ref={heroImgRef}>
@@ -91,20 +96,8 @@ export default function Index() {
           />
         </div>
         <div className="section-footer">
-          <Copy
-            type="flicker"
-            delay={isInitialLoad ? 7.5 : 0.65}
-            animateOnScroll={false}
-          >
-            <p>New Releases</p>
-          </Copy>
-          <Copy
-            type="flicker"
-            delay={isInitialLoad ? 7.5 : 0.65}
-            animateOnScroll={false}
-          >
-            <p>Winter 2026</p>
-          </Copy>
+          <p>New Releases</p>
+          <p>Winter 2026</p>
         </div>
       </section>
 
