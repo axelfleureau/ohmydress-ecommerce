@@ -36,7 +36,23 @@ const Preloader = () => {
     () => {
       if (!showPreloader) return;
 
-      document.fonts.ready.then(() => {
+      // Safety timeout: dismiss the preloader after 9s no matter what,
+      // so a slow font load or animation hiccup never traps the user.
+      const safetyTimeout = setTimeout(() => {
+        setLoaderAnimating(false);
+        setShowPreloader(false);
+      }, 9000);
+
+      const fontsReady = document.fonts && document.fonts.ready
+        ? document.fonts.ready
+        : Promise.resolve();
+
+      // Race the real fonts.ready against a 1.5s fallback so we never hang.
+      Promise.race([
+        fontsReady,
+        new Promise((resolve) => setTimeout(resolve, 1500)),
+      ]).then(() => {
+        clearTimeout(safetyTimeout);
         const logoSplit = SplitText.create(".preloader-logo h1", {
           type: "chars",
           charsClass: "char",
@@ -118,6 +134,10 @@ const Preloader = () => {
             "<"
           );
       });
+
+      return () => {
+        clearTimeout(safetyTimeout);
+      };
     },
     { scope: wrapperRef, dependencies: [showPreloader] }
   );

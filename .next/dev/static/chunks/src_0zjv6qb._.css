@@ -196,13 +196,13 @@
 }
 
 .preloader-progress {
-  background-color: var(--base-300);
+  background-color: var(--brand-burgundy);
   will-change: opacity, transform;
   z-index: 1;
 }
 
 .preloader-progress-bar {
-  background-color: var(--base-200);
+  background-color: var(--brand-burgundy-deep);
   will-change: transform;
   transform-origin: 0;
   width: 55%;
@@ -215,7 +215,6 @@
 
 .preloader-logo {
   text-align: center;
-  mix-blend-mode: difference;
   z-index: 2;
   width: 100%;
   position: absolute;
@@ -225,27 +224,20 @@
 }
 
 .preloader-logo h1 {
-  color: var(--base-200);
-  letter-spacing: -.02em;
+  color: var(--base-100);
+  font-family: var(--font-playfair), Georgia, serif;
+  letter-spacing: -.01em;
   opacity: 0;
-  font-size: 2rem;
+  font-size: clamp(2.5rem, 5vw, 4.5rem);
+  font-style: italic;
   font-weight: 500;
   position: relative;
 }
 
 .preloader-mask {
-  background-color: var(--base-400);
-  -webkit-mask: linear-gradient(var(--base-300), var(--base-300)),
-    url("/home/mask.svg") center/50% no-repeat;
-  -webkit-mask-composite: subtract;
-  -webkit-mask: linear-gradient(var(--base-300), var(--base-300)),
-    url("/home/mask.svg") center/50% no-repeat;
-  mask: linear-gradient(var(--base-300), var(--base-300)),
-    url("/home/mask.svg") center/50% no-repeat;
-  will-change: transform;
+  background-color: var(--base-100);
+  will-change: transform, opacity;
   z-index: 1;
-  -webkit-mask-composite: source-out;
-  mask-composite: subtract;
 }
 
 .preloader-content {
@@ -268,26 +260,6 @@
 
   .preloader-logo h1 {
     font-size: 2rem;
-  }
-
-  .preloader-mask {
-    -webkit-mask-composite: subtract;
-    -webkit-mask-image: linear-gradient(#f5f5f5, #f5f5f5), url("/home/mask.svg");
-    mask-image: linear-gradient(#f5f5f5, #f5f5f5), url("/home/mask.svg");
-    -webkit-mask-position: 0 0, center;
-    mask-position: 0 0, center;
-    -webkit-mask-size: auto, 90%;
-    mask-size: auto, 90%;
-    -webkit-mask-repeat: repeat, no-repeat;
-    mask-repeat: repeat, no-repeat;
-    -webkit-mask-clip: border-box, border-box;
-    mask-clip: border-box, border-box;
-    -webkit-mask-origin: border-box, border-box;
-    mask-origin: border-box, border-box;
-    -webkit-mask-composite: source-out;
-    mask-composite: subtract;
-    -webkit-mask-source-type: auto, auto;
-    mask-mode: match-source, match-source;
   }
 }
 

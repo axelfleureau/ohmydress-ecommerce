@@ -1,5 +1,5 @@
 import "./globals.css";
-import { Playfair_Display, Cormorant_Garamond, Pinyon_Script } from "next/font/google";
+import { Playfair_Display, Cormorant_Garamond } from "next/font/google";
 
 import ClientLayout from "@/client-layout";
 
@@ -12,18 +12,14 @@ const playfair = Playfair_Display({
   weight: ["400", "500", "600", "700", "800", "900"],
   subsets: ["latin"],
   variable: "--font-playfair",
+  display: "swap",
 });
 
 const cormorant = Cormorant_Garamond({
   weight: ["300", "400", "500", "600", "700"],
   subsets: ["latin"],
   variable: "--font-cormorant",
-});
-
-const pinyon = Pinyon_Script({
-  weight: "400",
-  subsets: ["latin"],
-  variable: "--font-pinyon",
+  display: "swap",
 });
 
 export const metadata = {
@@ -36,7 +32,7 @@ export default function RootLayout({ children }) {
   return (
     <html lang="en">
       <body
-        className={`${playfair.variable} ${cormorant.variable} ${pinyon.variable}`}
+        className={`${playfair.variable} ${cormorant.variable}`}
       >
         <TransitionProvider>
           <ClientLayout footer={<Footer />}>

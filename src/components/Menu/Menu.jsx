@@ -334,16 +334,16 @@ const Menu = () => {
                 <p>New In</p>
               </div>
               <div className="menu-sub-links menu-product-links">
-                <Link href="/product" onClick={handleLinkClick}>
+                <Link href="/unit" onClick={handleLinkClick}>
                   01. Halter Neck Ruched Red Gown
                 </Link>
-                <Link href="/product" onClick={handleLinkClick}>
+                <Link href="/unit" onClick={handleLinkClick}>
                   02. Velvet Plunge Dress
                 </Link>
-                <Link href="/product" onClick={handleLinkClick}>
+                <Link href="/unit" onClick={handleLinkClick}>
                   03. Amelia Bag — Burgundy
                 </Link>
-                <Link href="/product" onClick={handleLinkClick}>
+                <Link href="/unit" onClick={handleLinkClick}>
                   04. Ivory Muse Mini Dress
                 </Link>
               </div>

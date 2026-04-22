@@ -28,7 +28,8 @@
 
 .menu .menu-logo {
   text-transform: uppercase;
-  font-family: var(--font-koulen), sans-serif;
+  font-family: var(--font-playfair), Georgia, serif;
+  font-style: italic;
   font-size: clamp(1.25rem, 2vw, 3rem);
   line-height: 1;
   cursor: pointer;

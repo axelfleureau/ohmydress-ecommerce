@@ -48,7 +48,19 @@ const Preloader = ()=>{
     ]);
     (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f40$gsap$2f$react$2f$src$2f$index$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["useGSAP"])(()=>{
         if (!showPreloader) return;
-        document.fonts.ready.then(()=>{
+        // Safety timeout: dismiss the preloader after 9s no matter what,
+        // so a slow font load or animation hiccup never traps the user.
+        const safetyTimeout = setTimeout(()=>{
+            setLoaderAnimating(false);
+            setShowPreloader(false);
+        }, 9000);
+        const fontsReady = document.fonts && document.fonts.ready ? document.fonts.ready : Promise.resolve();
+        // Race the real fonts.ready against a 1.5s fallback so we never hang.
+        Promise.race([
+            fontsReady,
+            new Promise((resolve)=>setTimeout(resolve, 1500))
+        ]).then(()=>{
+            clearTimeout(safetyTimeout);
             const logoSplit = __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$gsap$2f$SplitText$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["SplitText"].create(".preloader-logo h1", {
                 type: "chars",
                 charsClass: "char",
@@ -109,6 +121,9 @@ const Preloader = ()=>{
                 ease: "power3.out"
             }, "<");
         });
+        return ()=>{
+            clearTimeout(safetyTimeout);
+        };
     }, {
         scope: wrapperRef,
         dependencies: [
@@ -127,7 +142,7 @@ const Preloader = ()=>{
                         className: "preloader-progress-bar"
                     }, void 0, false, {
                         fileName: "[project]/src/components/Preloader/Preloader.jsx",
-                        lineNumber: 130,
+                        lineNumber: 150,
                         columnNumber: 9
                     }, ("TURBOPACK compile-time value", void 0)),
                     /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
@@ -136,31 +151,31 @@ const Preloader = ()=>{
                             children: "OhMyDress"
                         }, void 0, false, {
                             fileName: "[project]/src/components/Preloader/Preloader.jsx",
-                            lineNumber: 132,
+                            lineNumber: 152,
                             columnNumber: 11
                         }, ("TURBOPACK compile-time value", void 0))
                     }, void 0, false, {
                         fileName: "[project]/src/components/Preloader/Preloader.jsx",
-                        lineNumber: 131,
+                        lineNumber: 151,
                         columnNumber: 9
                     }, ("TURBOPACK compile-time value", void 0))
                 ]
             }, void 0, true, {
                 fileName: "[project]/src/components/Preloader/Preloader.jsx",
-                lineNumber: 129,
+                lineNumber: 149,
                 columnNumber: 7
             }, ("TURBOPACK compile-time value", void 0)),
             /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
                 className: "preloader-mask"
             }, void 0, false, {
                 fileName: "[project]/src/components/Preloader/Preloader.jsx",
-                lineNumber: 135,
+                lineNumber: 155,
                 columnNumber: 7
             }, ("TURBOPACK compile-time value", void 0))
         ]
     }, void 0, true, {
         fileName: "[project]/src/components/Preloader/Preloader.jsx",
-        lineNumber: 128,
+        lineNumber: 148,
         columnNumber: 5
     }, ("TURBOPACK compile-time value", void 0));
 };
@@ -610,14 +625,16 @@ function Copy({ children, animateOnScroll = true, delay = 0, type = "slide" }) {
     const splitRefs = (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["useRef"])([]);
     const waitForFonts = async ()=>{
         try {
-            await document.fonts.ready;
+            await Promise.race([
+                document.fonts.ready,
+                new Promise((resolve)=>setTimeout(resolve, 1500))
+            ]);
             const customFonts = [
-                "Koulen",
-                "Host Grotesk",
-                "DM Mono"
+                "Playfair Display",
+                "Cormorant Garamond"
             ];
             const fontCheckPromises = customFonts.map((fontFamily)=>{
-                return document.fonts.check(`16px ${fontFamily}`);
+                return document.fonts.check(`16px "${fontFamily}"`);
             });
             await Promise.all(fontCheckPromises);
             await new Promise((resolve)=>setTimeout(resolve, 100));
@@ -744,7 +761,7 @@ function Copy({ children, animateOnScroll = true, delay = 0, type = "slide" }) {
         children: children
     }, void 0, false, {
         fileName: "[project]/src/components/Copy/Copy.jsx",
-        lineNumber: 164,
+        lineNumber: 167,
         columnNumber: 5
     }, this);
 }

@@ -21,11 +21,14 @@ export default function Copy({
 
   const waitForFonts = async () => {
     try {
-      await document.fonts.ready;
+      await Promise.race([
+        document.fonts.ready,
+        new Promise((resolve) => setTimeout(resolve, 1500)),
+      ]);
 
-      const customFonts = ["Koulen", "Host Grotesk", "DM Mono"];
+      const customFonts = ["Playfair Display", "Cormorant Garamond"];
       const fontCheckPromises = customFonts.map((fontFamily) => {
-        return document.fonts.check(`16px ${fontFamily}`);
+        return document.fonts.check(`16px "${fontFamily}"`);
       });
 
       await Promise.all(fontCheckPromises);

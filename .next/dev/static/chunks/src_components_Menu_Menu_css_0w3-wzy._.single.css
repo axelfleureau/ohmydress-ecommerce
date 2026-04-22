@@ -29,10 +29,11 @@
 
 .menu .menu-logo {
   text-transform: uppercase;
-  font-family: var(--font-koulen), sans-serif;
+  font-family: var(--font-playfair), Georgia, serif;
   cursor: pointer;
   color: var(--base-100);
   font-size: clamp(1.25rem, 2vw, 3rem);
+  font-style: italic;
   line-height: 1;
 }
 
