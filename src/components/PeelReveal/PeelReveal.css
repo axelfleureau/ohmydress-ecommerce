@@ -25,6 +25,23 @@
   will-change: transform;
 }
 
+.peel-reveal .peel-reveal-img-container .pr-img.pr-bg img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: center;
+  filter: brightness(0.55) saturate(1.1);
+}
+
+.peel-reveal .peel-reveal-img-container .pr-img.pr-silhouette img,
+.peel-reveal .peel-reveal-img-container .pr-img.mask img {
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+  object-position: center bottom;
+  filter: drop-shadow(0 0 40px rgba(125, 21, 40, 0.35));
+}
+
 .peel-reveal .peel-reveal-img-container .pr-img.mask {
   -webkit-mask-image: url("/peel-reveal/peel-reveal-img-mask.png");
   mask-image: url("/peel-reveal/peel-reveal-img-mask.png");

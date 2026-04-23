@@ -121,9 +121,12 @@ export default function Genesis() {
       <section className="genesis-hero">
         <div className="gen-hero-img">
           <img
-            src="https://ohmydress.store/cdn/shop/files/IMG_0784.jpg?v=1760356962&width=1600"
-            alt=""
+            src="/spotlight/spotlight_img_05.jpg"
+            alt="OhMyDress editorial"
           />
+        </div>
+        <div className="gen-silhouette">
+          <img src="/silhouettes/red_gown.png" alt="OhMyDress silhouette" />
         </div>
         <div className="container">
           <div className="gen-hero-copy">

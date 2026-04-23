@@ -31,10 +31,12 @@ export default function Touchpoint() {
     const container = calloutRef.current;
     if (!container) return;
 
+    let st = null;
+
     const timer = setTimeout(() => {
       const image = container.querySelector(".contact-callout-img");
 
-      const st = ScrollTrigger.create({
+      st = ScrollTrigger.create({
         trigger: container,
         start: "top bottom",
         end: "bottom top",
@@ -48,14 +50,11 @@ export default function Touchpoint() {
           });
         },
       });
-
-      return () => {
-        st.kill();
-      };
     }, 500);
 
     return () => {
       clearTimeout(timer);
+      if (st) st.kill();
     };
   }, []);
 
@@ -90,10 +89,7 @@ export default function Touchpoint() {
           </div>
           <div className="contact-hero-col contact-hero-img-wrapper">
             <div className="contact-hero-img" ref={contactHeroImgRef}>
-              <img
-                src="https://ohmydress.store/cdn/shop/files/IMG_2715.jpg?v=1765380874&width=1200"
-                alt=""
-              />
+              <img src="/lookbook-grid/lb_06.jpg" alt="" />
             </div>
           </div>
         </div>
@@ -117,7 +113,7 @@ export default function Touchpoint() {
             </Copy>
             <div className="contact-callout-img">
               <img
-                src="https://ohmydress.store/cdn/shop/files/IMG_1623.jpg?v=1764369017&width=1200"
+                src="/lookbook-grid/lb_07.jpg"
                 alt=""
               />
             </div>

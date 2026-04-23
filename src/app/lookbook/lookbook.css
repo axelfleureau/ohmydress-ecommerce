@@ -6,8 +6,202 @@
   overflow: hidden;
 }
 
+.lookbook-hero-fallback {
+  position: absolute;
+  inset: 0;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  overflow: hidden;
+}
+
+.lookbook-hero-strip {
+  display: flex;
+  gap: 0.75rem;
+  padding: 0 0.75rem;
+  width: 100%;
+  height: 100%;
+  align-items: center;
+}
+
+.lookbook-hero-strip-img {
+  flex: 0 0 auto;
+  width: 18vw;
+  height: 72%;
+  border-radius: 0.5rem;
+  overflow: hidden;
+}
+
+.lookbook-hero-strip-img img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  transition: transform 800ms ease;
+}
+
+.lookbook-hero-strip-img:hover img {
+  transform: scale(1.05);
+}
+
+.lookbook-hero-title {
+  position: absolute;
+  inset: 0;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  gap: 0.5rem;
+  text-align: center;
+  pointer-events: none;
+}
+
+.lookbook-hero-title h1 {
+  font-family: var(--font-cormorant), serif;
+  font-style: italic;
+  font-weight: 300;
+  font-size: clamp(5rem, 14vw, 16rem);
+  line-height: 0.85;
+  color: rgba(13, 13, 13, 0.12);
+  text-transform: none;
+  letter-spacing: -0.02em;
+}
+
+.lookbook-hero-title p {
+  font-family: var(--font-playfair), serif;
+  font-size: 0.75rem;
+  letter-spacing: 0.3em;
+  text-transform: uppercase;
+  color: var(--base-500);
+  margin: 0.5rem 0;
+}
+
+.lookbook-editorial {
+  position: relative;
+  width: 100%;
+  background-color: var(--base-100);
+  padding: 6rem 0 8rem 0;
+}
+
+.lookbook-editorial .container {
+  display: flex;
+  flex-direction: column;
+  gap: 4rem;
+}
+
+.lookbook-editorial-header {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 1.5rem;
+}
+
+.lookbook-editorial-header p {
+  color: var(--base-500);
+}
+
+.lookbook-editorial-header h2 {
+  max-width: 38rem;
+}
+
+.lookbook-editorial-grid {
+  display: grid;
+  grid-template-columns: repeat(12, 1fr);
+  grid-auto-rows: 22svh;
+  gap: 1rem;
+}
+
+.lookbook-tile {
+  position: relative;
+  overflow: hidden;
+  border-radius: 0.5rem;
+  background-color: var(--base-200);
+}
+
+.lookbook-tile img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  transition: transform 1200ms ease;
+}
+
+.lookbook-tile:hover img {
+  transform: scale(1.06);
+}
+
+.lookbook-tile figcaption {
+  position: absolute;
+  left: 1rem;
+  bottom: 0.85rem;
+  font-family: var(--font-cormorant), Georgia, serif;
+  text-transform: uppercase;
+  letter-spacing: 0.14em;
+  font-size: 0.7rem;
+  color: var(--base-100);
+  background-color: rgba(13, 13, 13, 0.45);
+  padding: 0.35rem 0.6rem;
+  border-radius: 0.25rem;
+  backdrop-filter: blur(6px);
+}
+
+.lookbook-tile-1 { grid-column: span 7; grid-row: span 2; }
+.lookbook-tile-2 { grid-column: span 5; grid-row: span 2; }
+.lookbook-tile-3 { grid-column: span 4; grid-row: span 2; }
+.lookbook-tile-4 { grid-column: span 4; grid-row: span 2; }
+.lookbook-tile-5 { grid-column: span 4; grid-row: span 2; }
+.lookbook-tile-6 { grid-column: span 5; grid-row: span 2; }
+
+/* Repeating row group */
+.lookbook-tile:nth-child(7) { grid-column: span 7; grid-row: span 2; }
+.lookbook-tile:nth-child(8) { grid-column: span 6; grid-row: span 2; }
+.lookbook-tile:nth-child(9) { grid-column: span 6; grid-row: span 2; }
+.lookbook-tile:nth-child(10) { grid-column: span 12; grid-row: span 2; }
+
 @media (max-width: 1000px) {
   .lookbook .section-footer p:nth-child(2) {
     display: none;
+  }
+
+  .lookbook-editorial {
+    padding: 4rem 0 5rem 0;
+  }
+
+  .lookbook-editorial-grid {
+    grid-template-columns: repeat(6, 1fr);
+    grid-auto-rows: 18svh;
+  }
+
+  .lookbook-tile,
+  .lookbook-tile-1,
+  .lookbook-tile-2,
+  .lookbook-tile-3,
+  .lookbook-tile-4,
+  .lookbook-tile-5,
+  .lookbook-tile-6,
+  .lookbook-editorial-grid .lookbook-tile:nth-child(n) {
+    grid-column: span 3;
+    grid-row: span 2;
+  }
+
+  .lookbook-editorial-grid .lookbook-tile:nth-child(1),
+  .lookbook-editorial-grid .lookbook-tile:nth-child(10) {
+    grid-column: span 6;
+  }
+}
+
+@media (max-width: 600px) {
+  .lookbook-editorial-grid {
+    grid-template-columns: repeat(2, 1fr);
+    grid-auto-rows: 20svh;
+  }
+
+  .lookbook-tile,
+  .lookbook-editorial-grid .lookbook-tile:nth-child(n) {
+    grid-column: span 1;
+    grid-row: span 1;
+  }
+
+  .lookbook-editorial-grid .lookbook-tile:nth-child(1),
+  .lookbook-editorial-grid .lookbook-tile:nth-child(10) {
+    grid-column: span 2;
   }
 }

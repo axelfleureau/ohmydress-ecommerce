@@ -10,8 +10,8 @@ import { SplitText } from "gsap/SplitText";
 
 gsap.registerPlugin(ScrollTrigger, SplitText);
 
-const PEEL_IMG =
-  "https://ohmydress.store/cdn/shop/files/IMG_0784.jpg?v=1760356962&width=1600";
+const PEEL_SILHOUETTE = "/silhouettes/velvet_plunge.png";
+const PEEL_BG = "/lookbook-grid/lb_05.jpg";
 
 const PeelReveal = () => {
   const peelRevealContainerRef = useRef(null);
@@ -141,26 +141,29 @@ const PeelReveal = () => {
           </Copy>
         </div>
         <div className="peel-reveal-img-container">
-          <div className="pr-img">
-            <img src={PEEL_IMG} alt="OhMyDress signature" />
+          <div className="pr-img pr-bg">
+            <img src={PEEL_BG} alt="" />
+          </div>
+          <div className="pr-img pr-silhouette">
+            <img src={PEEL_SILHOUETTE} alt="OhMyDress silhouette" />
           </div>
           <div className="pr-img mask">
-            <img src={PEEL_IMG} alt="" />
+            <img src={PEEL_SILHOUETTE} alt="" />
           </div>
           <div className="pr-img mask">
-            <img src={PEEL_IMG} alt="" />
+            <img src={PEEL_SILHOUETTE} alt="" />
           </div>
           <div className="pr-img mask">
-            <img src={PEEL_IMG} alt="" />
+            <img src={PEEL_SILHOUETTE} alt="" />
           </div>
           <div className="pr-img mask">
-            <img src={PEEL_IMG} alt="" />
+            <img src={PEEL_SILHOUETTE} alt="" />
           </div>
           <div className="pr-img mask">
-            <img src={PEEL_IMG} alt="" />
+            <img src={PEEL_SILHOUETTE} alt="" />
           </div>
           <div className="pr-img mask">
-            <img src={PEEL_IMG} alt="" />
+            <img src={PEEL_SILHOUETTE} alt="" />
           </div>
           <div className="peel-reveal-header">
             <h1>Dress it like you own it</h1>

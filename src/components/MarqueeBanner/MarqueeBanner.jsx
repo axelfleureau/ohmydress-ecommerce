@@ -56,7 +56,7 @@ const MarqueeBanner = () => {
         </div>
         <div className="banner-img">
           <img
-            src="https://ohmydress.store/cdn/shop/files/IMG_0784.jpg?v=1760356962&width=1200"
+            src="/marquee-banner/marquee_banner_01.png"
             alt="OhMyDress signature look"
           />
         </div>

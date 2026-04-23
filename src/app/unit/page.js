@@ -136,10 +136,10 @@ export default function Unit() {
 
   const heroShots = [
     "https://ohmydress.store/cdn/shop/files/IMG_2715.jpg?v=1765380874&width=1600",
-    "https://ohmydress.store/cdn/shop/files/IMG_2711.jpg?v=1765380870&width=1600",
-    "https://ohmydress.store/cdn/shop/files/IMG_1531.jpg?v=1764368658&width=1600",
-    "https://ohmydress.store/cdn/shop/files/IMG_1623.jpg?v=1764369017&width=1600",
-    "https://ohmydress.store/cdn/shop/files/IMG_0590.jpg?v=1775580806&width=1600",
+    "/lookbook-grid/lb_02.jpg",
+    "/lookbook-grid/lb_06.jpg",
+    "/lookbook-grid/lb_08.jpg",
+    "/lookbook-grid/lb_07.jpg",
   ];
 
   return (
@@ -222,19 +222,13 @@ export default function Unit() {
           </div>
         </div>
         <div className="product-col product-col-img">
-          <img
-            src="https://ohmydress.store/cdn/shop/files/IMG_2711.jpg?v=1765380870&width=1600"
-            alt=""
-          />
+          <img src="/lookbook-grid/lb_03.jpg" alt="" />
         </div>
       </section>
 
       <section className="product-details shipping-details">
         <div className="product-col product-col-img">
-          <img
-            src="https://ohmydress.store/cdn/shop/files/IMG_1531.jpg?v=1764368658&width=1600"
-            alt=""
-          />
+          <img src="/lookbook-grid/lb_09.jpg" alt="" />
         </div>
         <div className="product-col product-col-copy">
           <div className="product-col-copy-wrapper">

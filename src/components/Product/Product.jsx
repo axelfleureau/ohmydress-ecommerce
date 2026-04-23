@@ -24,11 +24,23 @@ const Product = ({
 
   const imgSrc =
     product?.image || `/products/product_${productIndex}.png`;
+  const hoverSrc = product?.hoverImage;
 
   return (
     <div className={`product ${className}`} ref={innerRef} style={style}>
       <Link href="/unit" className="product-img" onClick={handleImageClick}>
-        <img src={imgSrc} alt={product.name} />
+        <span className="product-img-frame">
+          <img className="product-img-primary" src={imgSrc} alt={product.name} />
+          {hoverSrc && (
+            <img
+              className="product-img-hover"
+              src={hoverSrc}
+              alt=""
+              loading="lazy"
+              aria-hidden="true"
+            />
+          )}
+        </span>
       </Link>
       <div className="product-info">
         <div className="product-info-wrapper">

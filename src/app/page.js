@@ -56,7 +56,7 @@ export default function Index() {
         opacity: 1,
         duration: 1.1,
         ease: "power3.out",
-        delay: isInitialLoad ? 5.4 : 0.2,
+        delay: isInitialLoad ? 5.4 : 0,
       }
     );
 
@@ -86,12 +86,16 @@ export default function Index() {
         />
         <div className="container">
           <div className="hero-header" ref={heroHeaderRef}>
-            <h1>Dress it like you own it</h1>
+            <div className="hero-title" role="heading" aria-level="1">
+              <span className="hero-line-serif">Dress it</span>
+              <span className="hero-line-sans">like you</span>
+              <span className="hero-line-serif">own it</span>
+            </div>
           </div>
         </div>
         <div className="hero-img" ref={heroImgRef}>
           <img
-            src="https://ohmydress.store/cdn/shop/files/IMG_2827.jpg?v=1765537119&width=1600"
+            src="/home/hero.png"
             alt="OhMyDress hero"
           />
         </div>
@@ -157,6 +161,46 @@ export default function Index() {
                 showAddToCart={true}
               />
             ))}
+          </div>
+        </div>
+      </section>
+
+      <section className="silhouette-feature">
+        <div className="container">
+          <div className="silhouette-copy">
+            <Copy type="flicker">
+              <p>The Silhouette</p>
+            </Copy>
+            <Copy>
+              <h3>
+                Crafted to move <br /> with you
+              </h3>
+            </Copy>
+            <Copy>
+              <p>
+                Every OhMyDress silhouette is born from Italian ateliers — hand-finished,
+                limited-edition, made to be worn and remembered.
+              </p>
+            </Copy>
+            <div className="silhouette-meta">
+              <div>
+                <Copy type="flicker"><p>Collection</p></Copy>
+                <Copy><p>Winter 2026</p></Copy>
+              </div>
+              <div>
+                <Copy type="flicker"><p>Made in</p></Copy>
+                <Copy><p>Italy</p></Copy>
+              </div>
+              <div>
+                <Copy type="flicker"><p>Edition</p></Copy>
+                <Copy><p>Limited</p></Copy>
+              </div>
+            </div>
+          </div>
+          <div className="silhouette-stage">
+            <div className="silhouette-img">
+              <img src="/home/hero.png" alt="OhMyDress silhouette — burgundy satin gown" />
+            </div>
           </div>
         </div>
       </section>

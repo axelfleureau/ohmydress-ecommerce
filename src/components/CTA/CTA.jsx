@@ -17,6 +17,8 @@ const CTA = () => {
     const container = ctaRef.current;
     if (!container) return;
 
+    let st = null;
+
     const timer = setTimeout(() => {
       const leftImage = container.querySelector(
         ".cta-col:nth-child(1) .cta-side-img"
@@ -25,7 +27,7 @@ const CTA = () => {
         ".cta-col:nth-child(3) .cta-side-img"
       );
 
-      const st = ScrollTrigger.create({
+      st = ScrollTrigger.create({
         trigger: container,
         start: "top bottom",
         end: "bottom top",
@@ -44,14 +46,11 @@ const CTA = () => {
           });
         },
       });
-
-      return () => {
-        st.kill();
-      };
     }, 500);
 
     return () => {
       clearTimeout(timer);
+      if (st) st.kill();
     };
   }, []);
 
@@ -59,10 +58,10 @@ const CTA = () => {
     <section className="cta" ref={ctaRef}>
       <div className="container">
         <div className="cta-col">
-          <div className="cta-side-img">
+          <div className="cta-side-img cta-side-silhouette">
             <img
-              src="https://ohmydress.store/cdn/shop/files/IMG_2715.jpg?v=1765380874&width=900"
-              alt=""
+              src="/silhouettes/seraphine.png"
+              alt="OhMyDress silhouette"
             />
           </div>
           <div className="cta-col-copy">
@@ -82,16 +81,16 @@ const CTA = () => {
           </div>
           <div className="cta-main-img">
             <img
-              src="https://ohmydress.store/cdn/shop/files/IMG_2827.jpg?v=1765537119&width=1200"
-              alt=""
+              src="/lookbook-grid/lb_07.jpg"
+              alt="OhMyDress collection"
             />
           </div>
         </div>
         <div className="cta-col">
-          <div className="cta-side-img">
+          <div className="cta-side-img cta-side-silhouette">
             <img
-              src="https://ohmydress.store/cdn/shop/files/IMG_1623.jpg?v=1764369017&width=900"
-              alt=""
+              src="/silhouettes/signature.png"
+              alt="OhMyDress silhouette"
             />
           </div>
         </div>

@@ -42,12 +42,18 @@ const Orb = ({
     );
     camera.position.z = 10;
 
-    const renderer = new THREE.WebGLRenderer({
-      antialias: true,
-      alpha: true,
-      preserveDrawingBuffer: true,
-      powerPreference: "high-performance",
-    });
+    let renderer;
+    try {
+      renderer = new THREE.WebGLRenderer({
+        antialias: true,
+        alpha: true,
+        preserveDrawingBuffer: true,
+        powerPreference: "high-performance",
+      });
+    } catch (err) {
+      console.warn("Orb: WebGL not available, skipping 3D scene", err);
+      return;
+    }
 
     renderer.setSize(window.innerWidth, window.innerHeight);
     renderer.setClearColor(0x000000, 0);
@@ -159,10 +165,7 @@ const Orb = ({
           }
         },
         undefined,
-        (error) => {
-          if (mounted) {
-          }
-        }
+        () => {}
       );
     };
 

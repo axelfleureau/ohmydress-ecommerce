@@ -13,8 +13,30 @@
   height: 100%;
 }
 
+.genesis-hero .gen-silhouette {
+  position: absolute;
+  bottom: 0;
+  right: 5%;
+  height: 90%;
+  width: 22%;
+  z-index: 1;
+  display: flex;
+  align-items: flex-end;
+  justify-content: center;
+  pointer-events: none;
+}
+
+.genesis-hero .gen-silhouette img {
+  height: 100%;
+  width: auto;
+  object-fit: contain;
+  object-position: center bottom;
+  filter: drop-shadow(0 20px 40px rgba(13,13,13,0.25));
+}
+
 .genesis-hero .container {
   position: relative;
+  z-index: 2;
   color: var(--base-100);
   display: flex;
   flex-direction: column;

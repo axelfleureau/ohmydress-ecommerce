@@ -49,8 +49,19 @@
 
 .marquee-banner .banner .banner-img {
   position: absolute;
-  bottom: -7.5rem;
+  bottom: -2rem;
   width: 100%;
+  height: 80%;
+  display: flex;
+  justify-content: center;
+  align-items: flex-end;
+}
+
+.marquee-banner .banner .banner-img img {
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+  object-position: center bottom;
 }
 
 .marquee-banner .banner .banner-content {
@@ -92,7 +103,7 @@
     font-size: 8vw;
   }
 
-  .marquee-banner .marquee-banner {
+  .marquee-banner {
     height: 80svh;
   }
 }

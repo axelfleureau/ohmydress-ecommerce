@@ -7,28 +7,64 @@
 
 .hero .hero-header {
   position: absolute;
-  top: 20svh;
+  top: 10svh;
   left: 50%;
   transform: translateX(-50%);
-  width: 70%;
+  width: 96%;
+  max-width: 140rem;
   text-align: center;
   will-change: transform;
+  z-index: 2;
+  pointer-events: none;
+}
+
+.hero .hero-title {
+  font-size: clamp(5rem, 14.5vw, 18rem);
+  line-height: 0.88;
+  color: var(--base-700);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 0.12em;
+}
+
+.hero .hero-title .hero-line-serif {
+  font-family: var(--font-playfair), serif;
+  font-style: normal;
+  font-weight: 900;
+  text-transform: uppercase;
+  letter-spacing: -0.04em;
+  display: block;
+}
+
+.hero .hero-title .hero-line-sans {
+  font-family: var(--font-cormorant), serif;
+  font-style: italic;
+  font-weight: 300;
+  text-transform: none;
+  letter-spacing: 0.02em;
+  font-size: 0.38em;
+  color: var(--base-500);
+  display: block;
 }
 
 .hero .hero-img {
   position: absolute;
   top: 35svh;
   left: 0;
-  width: 100%;
-  height: 65svh;
+  right: 0;
+  margin: 0 auto;
+  width: 52%;
+  max-width: 700px;
+  height: 68svh;
   will-change: opacity, transform;
 }
 
 .hero .hero-img img {
   width: 100%;
   height: 100%;
-  object-fit: cover;
-  object-position: center top;
+  object-fit: contain;
+  object-position: center bottom;
   display: block;
 }
 
@@ -73,6 +109,82 @@
   width: 100%;
   height: 100%;
   object-fit: cover;
+}
+
+/* Selected silhouette editorial block */
+.silhouette-feature {
+  position: relative;
+  width: 100%;
+  background-color: var(--base-200);
+  padding: 8rem 0;
+  overflow: hidden;
+}
+
+.silhouette-feature .container {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 4rem;
+  align-items: center;
+}
+
+.silhouette-feature .silhouette-copy {
+  display: flex;
+  flex-direction: column;
+  gap: 2rem;
+  max-width: 32rem;
+}
+
+.silhouette-feature .silhouette-copy p {
+  color: var(--base-500);
+}
+
+.silhouette-feature .silhouette-copy .silhouette-meta {
+  display: flex;
+  gap: 3rem;
+  margin-top: 2rem;
+  border-top: 1px solid var(--base-300);
+  padding-top: 1.5rem;
+}
+
+.silhouette-feature .silhouette-stage {
+  position: relative;
+  width: 100%;
+  aspect-ratio: 4 / 5;
+  display: flex;
+  justify-content: center;
+  align-items: flex-end;
+  background:
+    radial-gradient(ellipse at 50% 65%, rgba(125, 21, 40, 0.18), transparent 60%),
+    var(--base-200);
+}
+
+.silhouette-feature .silhouette-stage::before {
+  content: "";
+  position: absolute;
+  bottom: 4%;
+  left: 8%;
+  right: 8%;
+  height: 60%;
+  background-color: var(--brand-burgundy);
+  border-radius: 50% 50% 0 0;
+  opacity: 0.18;
+  filter: blur(0);
+}
+
+.silhouette-feature .silhouette-stage .silhouette-img {
+  position: relative;
+  height: 96%;
+  display: flex;
+  align-items: flex-end;
+  z-index: 1;
+}
+
+.silhouette-feature .silhouette-stage .silhouette-img img {
+  height: 100%;
+  width: auto;
+  object-fit: contain;
+  display: block;
+  filter: drop-shadow(0 30px 30px rgba(13, 13, 13, 0.18));
 }
 
 .featured-products {
@@ -154,6 +266,15 @@
   .featured-products .featured-products-list {
     grid-template-columns: repeat(2, 1fr);
   }
+
+  .silhouette-feature .container {
+    grid-template-columns: 1fr;
+    gap: 2.5rem;
+  }
+
+  .silhouette-feature {
+    padding: 5rem 0;
+  }
 }
 
 @media (max-width: 480px) {
@@ -164,13 +285,18 @@
 
 @media (max-width: 1000px) {
   .hero .hero-header {
-    width: calc(100% - 3rem);
-    top: 14svh;
+    width: calc(100% - 2rem);
+    top: 11svh;
+  }
+
+  .hero .hero-title {
+    font-size: clamp(3rem, 12vw, 8rem);
   }
 
   .hero .hero-img {
-    top: 32svh;
-    height: 60svh;
+    top: 34svh;
+    height: 66svh;
+    width: 80%;
   }
 
   .about .about-copy {
@@ -193,17 +319,17 @@
 
 @media (max-width: 600px) {
   .hero .hero-header {
-    top: 12svh;
+    top: 11svh;
   }
 
   .hero .hero-img {
-    top: 38svh;
-    height: 55svh;
+    top: 36svh;
+    height: 64svh;
   }
 }
 
 @media (min-width: 2000px) {
   .hero .hero-header {
-    width: 40%;
+    width: 60%;
   }
 }
