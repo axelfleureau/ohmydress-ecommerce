@@ -1,5 +1,5 @@
 import "./globals.css";
-import { Playfair_Display, Cormorant_Garamond } from "next/font/google";  
+import { Playfair_Display, Cormorant_Garamond } from "next/font/google";  c
 
 import ClientLayout from "@/client-layout";
 
