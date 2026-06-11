@@ -3,6 +3,7 @@ import "./Product.css";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
 
+import { getPathLocale, localizePath, ui } from "@/lib/i18n";
 import { useCartStore } from "@/store/cartStore";
 
 const Product = ({
@@ -15,9 +16,11 @@ const Product = ({
 }) => {
   const addToCart = useCartStore((state) => state.addToCart);
   const pathname = usePathname();
+  const locale = getPathLocale(pathname);
+  const copy = ui(locale);
 
   const handleImageClick = () => {
-    if (pathname === "/unit") {
+    if (pathname?.startsWith("/products/")) {
       window.dispatchEvent(new CustomEvent("scrollToTop"));
     }
   };
@@ -25,12 +28,23 @@ const Product = ({
   const imgSrc =
     product?.image || `/products/product_${productIndex}.png`;
   const hoverSrc = product?.hoverImage;
+  const isAvailable = product?.available !== false;
 
   return (
     <div className={`product ${className}`} ref={innerRef} style={style}>
-      <Link href="/unit" className="product-img" onClick={handleImageClick}>
+      <Link
+        href={localizePath(`/products/${product.slug}`, locale)}
+        className="product-img"
+        onClick={handleImageClick}
+      >
         <span className="product-img-frame">
-          <img className="product-img-primary" src={imgSrc} alt={product.name} />
+          <img
+            className="product-img-primary"
+            src={imgSrc}
+            alt={product.name}
+            loading="lazy"
+            decoding="async"
+          />
           {hoverSrc && (
             <img
               className="product-img-hover"
@@ -50,9 +64,10 @@ const Product = ({
         {showAddToCart && (
           <button
             className="add-to-cart-btn"
-            onClick={() => addToCart(product)}
+            disabled={!isAvailable}
+            onClick={() => isAvailable && addToCart(product)}
           >
-            Add to Bag
+            {isAvailable ? copy.addToCart : copy.soldOut}
           </button>
         )}
       </div>

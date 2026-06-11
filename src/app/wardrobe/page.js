@@ -1,14 +1,19 @@
 "use client";
 import "./wardrobe.css";
 import { useEffect, useRef, useState } from "react";
+import { usePathname } from "next/navigation";
 
-import { products } from "./products";
+import { productColors, products, productTags } from "./products";
 import Product from "@/components/Product/Product";
 import Copy from "@/components/Copy/Copy";
+import { getPathLocale, ui } from "@/lib/i18n";
 
 import { gsap } from "gsap";
 
 export default function Wardrobe() {
+  const pathname = usePathname();
+  const locale = getPathLocale(pathname);
+  const copy = ui(locale);
   const [activeTag, setActiveTag] = useState("All");
   const [activeColor, setActiveColor] = useState(null);
   const [filteredProducts, setFilteredProducts] = useState(products);
@@ -70,46 +75,40 @@ export default function Wardrobe() {
       <section className="products-header">
         <div className="container">
           <Copy animateOnScroll={false} delay={0.65}>
-            <h1>The Collection</h1>
+            <h1>{locale === "en" ? "Collection" : "Colectia"}</h1>
           </Copy>
           <div className="products-header-divider"></div>
           <div className="product-filter-bar">
             <div className="filter-bar-header">
-              <p className="bodyCopy">Filters</p>
+              <p className="bodyCopy">{copy.filters}</p>
             </div>
             <div className="filter-bar-tags">
-              {["All", "Dresses", "Bags"].map((tag) => (
+              {productTags.map((tag) => (
                 <p
-                  key={tag}
-                  className={`bodyCopy ${activeTag === tag ? "active" : ""}`}
-                  onClick={() => handleFilterChange(tag, activeColor)}
+                  key={tag.value}
+                  className={`bodyCopy ${activeTag === tag.value ? "active" : ""}`}
+                  onClick={() => handleFilterChange(tag.value, activeColor)}
                 >
-                  {tag}
+                  {locale === "en" ? tag.value : tag.label}
                 </p>
               ))}
             </div>
             <div className="filter-bar-colors">
-              {[
-                "Black",
-                "Red",
-                "Burgundy",
-                "Blue",
-                "Ivory",
-                "Camel",
-                "Terracotta",
-              ].map((color) => (
+              {productColors.map((color) => (
                 <span
-                  key={color}
-                  className={`color-selector ${color.toLowerCase()} ${
-                    activeColor === color ? "active" : ""
+                  key={color.name}
+                  aria-label={color.name}
+                  className={`color-selector ${
+                    activeColor === color.name ? "active" : ""
                   }`}
                   onClick={() =>
                     handleFilterChange(
                       activeTag,
-                      activeColor === color ? null : color
+                      activeColor === color.name ? null : color.name
                     )
                   }
-                  style={{ cursor: isAnimating ? "not-allowed" : "pointer" }}
+                  title={color.name}
+                  style={{ backgroundColor: color.hex }}
                 ></span>
               ))}
             </div>
@@ -120,7 +119,7 @@ export default function Wardrobe() {
         <div className="container">
           {filteredProducts.map((product, index) => (
             <Product
-              key={product.name}
+              key={product.slug}
               product={product}
               productIndex={products.indexOf(product) + 1}
               showAddToCart={true}

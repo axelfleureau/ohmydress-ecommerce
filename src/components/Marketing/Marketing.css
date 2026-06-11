@@ -1,0 +1,84 @@
+.announcement-strip {
+  background: var(--brand-burgundy);
+  color: var(--base-100);
+  padding: 0.85rem 1.5rem;
+  text-align: center;
+}
+
+.announcement-strip a,
+.announcement-strip span {
+  color: var(--base-100);
+  font-size: 0.85rem;
+  line-height: 1.25;
+}
+
+.marketing-banner,
+.product-cta-card {
+  background: var(--base-200);
+  border: 1px solid var(--base-300);
+  border-radius: 0.5rem;
+}
+
+.marketing-banner {
+  margin: 0 auto 1rem;
+  max-width: 2000px;
+  padding: 1.5rem 2rem;
+}
+
+.marketing-banner__inner,
+.product-cta-card {
+  display: grid;
+  gap: 0.85rem;
+}
+
+.marketing-banner__eyebrow,
+.product-cta-card__eyebrow {
+  color: var(--base-500);
+}
+
+.marketing-banner h2,
+.product-cta-card h3 {
+  max-width: 18ch;
+}
+
+.marketing-banner h2 {
+  font-size: clamp(2rem, 3vw, 3.5rem);
+  letter-spacing: 0;
+}
+
+.marketing-banner__body,
+.product-cta-card__body {
+  max-width: 56ch;
+  color: var(--base-600);
+}
+
+.marketing-banner__cta,
+.product-cta-card__cta {
+  width: fit-content;
+  background: var(--brand-burgundy);
+  color: var(--base-100);
+  display: inline-flex;
+  padding: 0.9rem 1.15rem;
+  margin-top: 0.25rem;
+}
+
+.product-cta-list {
+  display: grid;
+  gap: 0.75rem;
+}
+
+.product-cta-card {
+  padding: 1rem;
+}
+
+.product-cta-card h3 {
+  font-size: 1.85rem;
+  letter-spacing: 0;
+}
+
+@media (max-width: 700px) {
+  .marketing-banner {
+    margin-bottom: 0.75rem;
+    padding: 1.25rem 1.5rem;
+  }
+}

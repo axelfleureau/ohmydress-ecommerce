@@ -1,203 +1,305 @@
-// Products mirror the live OhMyDress catalogue: dresses + Italian leather bags.
-// Images are served from the OhMyDress Shopify CDN and from /public assets.
-export const products = [
+import { shopifyProducts } from "./shopify-products.generated.js";
+
+export const products = shopifyProducts.map((product) => ({
+  ...product,
+  collections: [],
+}));
+
+const hasTag = (product, tag) => product.tags.includes(tag);
+const hasAnyTag = (product, tags) => tags.some((tag) => hasTag(product, tag));
+const isDress = (product) => product.tag === "Dresses";
+const isAccessory = (product) =>
+  ["Bags", "Belts"].includes(product.tag) ||
+  hasAnyTag(product, ["bag", "belt", "curele", "pochette", "genuine leather"]);
+const isClothing = (product) => !isAccessory(product);
+
+export const collections = [
   {
-    name: "Black Deep V Dress",
-    price: "149",
-    color: "Black",
-    tag: "Dresses",
-    sizes: ["S", "M", "L", "XL"],
-    image:
-      "https://ohmydress.store/cdn/shop/files/IMG_1531.jpg?v=1764368658&width=900",
-    hoverImage: "/products-hover/h_blackv.jpg",
+    handle: "new-in",
+    title: "New In",
+    eyebrow: "Drop curent",
     description:
-      "A sculpted black mini dress with a daring deep V-neckline. Cut to hug the silhouette, finished with a fluid drape that moves with you.",
+      "Cele mai noi rochii, tinute si accesorii OhMyDress disponibile acum.",
+    match: (product) => hasTag(product, "new"),
   },
   {
-    name: "Halter Neck Ruched Red Gown",
-    price: "229",
-    color: "Red",
-    tag: "Dresses",
-    sizes: ["S", "M", "L"],
-    image:
-      "https://ohmydress.store/cdn/shop/files/IMG_2715.jpg?v=1765380874&width=900",
-    hoverImage: "/products-hover/h_redgown.jpg",
+    handle: "dresses",
+    title: "Rochii",
+    eyebrow: "Colectie",
     description:
-      "A statement red gown with halter neck and architectural ruching. Designed to command the room, made to be remembered.",
+      "Rochii mini, midi si lungi pentru seri, evenimente si aparitii memorabile.",
+    match: isDress,
   },
   {
-    name: "Blue Stardust Halter Dress",
-    price: "189",
-    color: "Blue",
-    tag: "Dresses",
-    sizes: ["XS", "S", "M", "L"],
-    image:
-      "https://ohmydress.store/cdn/shop/files/IMG_1623.jpg?v=1764369017&width=900",
-    hoverImage: "/products-hover/h_bluestar.jpg",
-    description:
-      "Hand-embellished sequin halter dress in midnight blue. Catches every flicker of light, holds attention without effort.",
+    handle: "mini-dresses",
+    title: "Rochii Mini",
+    eyebrow: "Cumpara dupa lungime",
+    description: "Siluete scurte, feminine si statement, in editie limitata.",
+    match: (product) => isDress(product) && hasTag(product, "mini"),
   },
   {
-    name: "Black Stardust Halter Dress",
-    price: "189",
-    color: "Black",
-    tag: "Dresses",
-    sizes: ["XS", "S", "M", "L"],
-    image:
-      "https://ohmydress.store/cdn/shop/files/IMG_1617.jpg?v=1764368834&width=900",
-    hoverImage: "/products-hover/h_blackstar.jpg",
-    description:
-      "Sequin-embroidered halter in deep black. Sleek lines, soft drape — quiet glamour engineered for long evenings.",
+    handle: "midi-dresses",
+    title: "Rochii Midi",
+    eyebrow: "Cumpara dupa lungime",
+    description: "Rochii midi elegante pentru tinute de seara si evenimente.",
+    match: (product) => isDress(product) && hasTag(product, "midi"),
   },
   {
-    name: "Terracotta Deep V Dress",
-    price: "129",
-    color: "Terracotta",
-    tag: "Dresses",
-    sizes: ["S", "M", "L", "XL"],
-    image:
-      "https://ohmydress.store/cdn/shop/files/IMG_1198.jpg?v=1764330973&width=900",
-    hoverImage: "/lookbook-grid/lb_03.jpg",
-    description:
-      "Warm terracotta mini with a plunging V-neck and figure-skimming cut. A modern take on the seasonal essential.",
+    handle: "long-dresses",
+    title: "Rochii Lungi",
+    eyebrow: "Cumpara dupa lungime",
+    description: "Rochii lungi si gowns pentru aparitii cu prezenta.",
+    match: (product) => isDress(product) && hasTag(product, "long"),
   },
   {
-    name: "Seraphine Noir Dress",
-    price: "159",
-    color: "Black",
-    tag: "Dresses",
-    sizes: ["S", "M", "L"],
-    image:
-      "https://ohmydress.store/cdn/shop/files/IMG_0590.jpg?v=1775580806&width=900",
-    hoverImage: "/products-hover/h_seraphine.jpg",
-    description:
-      "An ethereal black dress with refined draping and an elongated silhouette. Designed for the woman who chooses to stand out.",
+    handle: "backless-dresses",
+    title: "Rochii Backless",
+    eyebrow: "Cumpara dupa stil",
+    description: "Rochii cu decupaje si linii senzuale, gandite pentru impact.",
+    match: (product) => isDress(product) && hasTag(product, "backless"),
   },
   {
-    name: "Ivory Muse Mini Dress",
-    price: "179",
-    color: "Ivory",
-    tag: "Dresses",
-    sizes: ["XS", "S", "M", "L"],
-    image:
-      "https://ohmydress.store/cdn/shop/files/IMG_0582.jpg?v=1775580501&width=900",
-    hoverImage: "/products-hover/h_ivory.jpg",
+    handle: "sparkle-dresses",
+    title: "Rochii Sparkle",
+    eyebrow: "Cumpara dupa stil",
     description:
-      "A romantic ivory mini with sculpted bodice and soft skirt. Bridal-adjacent, occasion-ready, effortlessly luminous.",
+      "Piese cu cristale, paiete si texturi care prind lumina la fiecare pas.",
+    match: (product) => isDress(product) && hasTag(product, "sparkle"),
   },
   {
-    name: "Black Sculpt Tailored Suit",
-    price: "249",
-    color: "Black",
-    tag: "Dresses",
-    sizes: ["S", "M", "L"],
-    image:
-      "https://ohmydress.store/cdn/shop/files/solero-2529.jpg?v=1764369346&width=900",
-    hoverImage: "/lookbook-grid/lb_07.jpg",
-    description:
-      "A sharply tailored black suit cut for power and presence. Sculpted shoulders, clean lines, an heirloom-quality finish.",
+    handle: "occasion-dresses",
+    title: "Rochii de ocazie",
+    eyebrow: "Cumpara dupa stil",
+    description: "Rochii pentru evenimente, seri speciale si ocazii elegante.",
+    match: (product) => isDress(product) && hasTag(product, "occasion"),
   },
   {
-    name: "Suede Tote Bag — Burgundy",
-    price: "339",
-    color: "Burgundy",
-    tag: "Bags",
-    sizes: ["One Size"],
-    image:
-      "https://ohmydress.store/cdn/shop/files/IMG_0070.jpg?v=1765383226&width=900",
-    hoverImage:
-      "https://ohmydress.store/cdn/shop/files/IMG_0058.jpg?v=1765383080&width=900",
-    description:
-      "Genuine Italian suede tote in deep burgundy with a contrast red interior. Handcrafted to outlive trends.",
+    handle: "long-sleeve-dresses",
+    title: "Rochii Long Sleeve",
+    eyebrow: "Cumpara dupa stil",
+    description: "Rochii cu maneca lunga pentru tinute elegante de seara.",
+    match: (product) => isDress(product) && hasTag(product, "long sleeve"),
   },
   {
-    name: "Suede Tote Bag — Camel",
-    price: "339",
-    color: "Camel",
-    tag: "Bags",
-    sizes: ["One Size"],
-    image:
-      "https://ohmydress.store/cdn/shop/files/IMG_0058.jpg?v=1765383080&width=900",
-    hoverImage:
-      "https://ohmydress.store/cdn/shop/files/IMG_0070.jpg?v=1765383226&width=900",
+    handle: "clothing",
+    title: "Imbracaminte",
+    eyebrow: "Colectie",
     description:
-      "Soft Italian suede tote in warm camel with crimson lining. Roomy, structured, made to be lived in.",
+      "Tops, seturi, salopete, fuste, pantaloni si piese coordonate.",
+    match: isClothing,
   },
   {
-    name: "Amelia Bag — Taupe",
-    price: "279",
-    color: "Camel",
-    tag: "Bags",
-    sizes: ["One Size"],
-    image:
-      "https://ohmydress.store/cdn/shop/files/IMG_3068_b5d50aea-f65e-45e2-8108-4969b2d1bcce.jpg?v=1766854095&width=900",
-    hoverImage:
-      "https://ohmydress.store/cdn/shop/files/IMG_3072.jpg?v=1766854188&width=900",
-    description:
-      "Petite shoulder bag crafted from genuine Italian leather in muted taupe. A timeless silhouette, refined for daily use.",
+    handle: "tops",
+    title: "Tops",
+    eyebrow: "Imbracaminte",
+    description: "Tops, corsete si bluze fine pentru tinute complete.",
+    match: (product) => product.tag === "Tops" || hasTag(product, "tops"),
   },
   {
-    name: "Amelia Bag — Burgundy",
-    price: "279",
-    color: "Burgundy",
-    tag: "Bags",
-    sizes: ["One Size"],
-    image:
-      "https://ohmydress.store/cdn/shop/files/IMG_3072.jpg?v=1766854188&width=900",
-    hoverImage:
-      "https://ohmydress.store/cdn/shop/files/IMG_3068_b5d50aea-f65e-45e2-8108-4969b2d1bcce.jpg?v=1766854095&width=900",
-    description:
-      "The Amelia in deep burgundy leather. Subtle hardware, soft-grain finish, tailored to elevate any look.",
+    handle: "cashmere-tops",
+    title: "Cashmere Tops",
+    eyebrow: "Tops",
+    description: "Bluze fine din cashmere, usoare si rafinate.",
+    match: (product) => hasTag(product, "cashmere"),
   },
   {
-    name: "Suede Heart-Shaped Bag — Taupe",
-    price: "229",
-    color: "Camel",
-    tag: "Bags",
-    sizes: ["One Size"],
-    image:
-      "https://ohmydress.store/cdn/shop/files/IMG_0141.jpg?v=1765382873&width=900",
-    hoverImage:
-      "https://ohmydress.store/cdn/shop/files/IMG_3704.jpg?v=1765382118&width=900",
-    description:
-      "A romantic heart-shaped suede bag in soft taupe. Italian craftsmanship with a poetic silhouette.",
+    handle: "corsets",
+    title: "Corsete",
+    eyebrow: "Tops",
+    description: "Corsete feminine cu structura si detalii delicate.",
+    match: (product) => hasTag(product, "corset"),
   },
   {
-    name: "Suede Heart-Shaped Bag — Camel",
-    price: "229",
-    color: "Camel",
-    tag: "Bags",
-    sizes: ["One Size"],
-    image:
-      "https://ohmydress.store/cdn/shop/files/IMG_3704.jpg?v=1765382118&width=900",
-    hoverImage:
-      "https://ohmydress.store/cdn/shop/files/IMG_0141.jpg?v=1765382873&width=900",
-    description:
-      "Heart-shaped Italian suede bag in warm camel. A small statement piece with real character.",
+    handle: "co-ords",
+    title: "Coordonate",
+    eyebrow: "Imbracaminte",
+    description: "Seturi coordonate si tinute complete in editie limitata.",
+    match: (product) => hasTag(product, "co-ords"),
   },
   {
-    name: "Velvet Plunge Dress",
-    price: "199",
-    color: "Burgundy",
-    tag: "Dresses",
-    sizes: ["XS", "S", "M", "L"],
-    image:
-      "https://ohmydress.store/cdn/shop/files/IMG_2827.jpg?v=1765537119&width=900",
-    hoverImage: "/lookbook-grid/lb_09.jpg",
-    description:
-      "Liquid velvet dress in rich burgundy with a deep plunge neckline. Sensual, structured, made for entrances.",
+    handle: "lounge-sets",
+    title: "Lounge Sets",
+    eyebrow: "Imbracaminte",
+    description: "Seturi lounge tricotate, confortabile si elegante.",
+    match: (product) => hasTag(product, "lounge set"),
   },
   {
-    name: "Crystal Mesh Mini",
-    price: "219",
-    color: "Black",
-    tag: "Dresses",
-    sizes: ["XS", "S", "M"],
-    image:
-      "https://ohmydress.store/cdn/shop/files/IMG_1624.jpg?v=1764368959&width=900",
-    hoverImage:
-      "https://ohmydress.store/cdn/shop/files/IMG_1617.jpg?v=1764368834&width=900",
+    handle: "suits",
+    title: "Costume",
+    eyebrow: "Imbracaminte",
+    description: "Costume elegante cu linii structurate.",
+    match: (product) => hasTag(product, "suit"),
+  },
+  {
+    handle: "jumpsuits",
+    title: "Salopete",
+    eyebrow: "Imbracaminte",
+    description: "Salopete si piese statement pentru seri speciale.",
+    match: (product) => hasTag(product, "jumpsuit"),
+  },
+  {
+    handle: "skirts",
+    title: "Fuste",
+    eyebrow: "Imbracaminte",
+    description: "Fuste mini si piese feminine pentru styling rapid.",
+    match: (product) => hasTag(product, "skirt"),
+  },
+  {
+    handle: "trousers",
+    title: "Pantaloni",
+    eyebrow: "Imbracaminte",
+    description: "Pantaloni usori pentru tinute fluide si elegante.",
+    match: (product) => hasTag(product, "trousers"),
+  },
+  {
+    handle: "accessories",
+    title: "Accesorii",
+    eyebrow: "Colectie",
+    description: "Genti, posete de ocazie si curele pentru completarea tinutei.",
+    match: isAccessory,
+  },
+  {
+    handle: "genti",
+    title: "Genti",
+    eyebrow: "Accesorii",
+    description: "Genti si posete in serii mici, fabricate in Italia.",
+    match: (product) => product.tag === "Bags" || hasTag(product, "bag"),
+  },
+  {
+    handle: "posete-din-piele-naturala",
+    title: "Posete din piele naturala",
+    eyebrow: "Made in Italy",
     description:
-      "A glittering mesh mini covered in crystal embellishment. Designed to catch every light in the room.",
+      "Posete din piele naturala italiana, cu linii atemporale si detalii rafinate.",
+    match: (product) => hasTag(product, "genuine leather"),
+  },
+  {
+    handle: "posete-de-ocazie",
+    title: "Posete de ocazie",
+    eyebrow: "Accesorii",
+    description: "Clutch-uri si posete pentru seri, evenimente si ocazii.",
+    match: (product) => hasTag(product, "pochette"),
+  },
+  {
+    handle: "curele",
+    title: "Curele",
+    eyebrow: "Accesorii",
+    description: "Curele din piele pentru styling elegant si precis.",
+    match: (product) => product.tag === "Belts" || hasAnyTag(product, ["belt", "curele"]),
+  },
+  {
+    handle: "frontpage",
+    title: "Pagina principala",
+    eyebrow: "OhMyDress",
+    description: "Selectie curenta OhMyDress.",
+    match: (product) => hasTag(product, "new") || isDress(product),
+    noindex: true,
+  },
+  {
+    handle: "rochii",
+    canonicalHandle: "dresses",
+    isAlias: true,
+  },
+  {
+    handle: "rochii-mini",
+    canonicalHandle: "mini-dresses",
+    isAlias: true,
+  },
+  {
+    handle: "rochii-midi",
+    canonicalHandle: "midi-dresses",
+    isAlias: true,
+  },
+  {
+    handle: "rochii-long",
+    canonicalHandle: "long-dresses",
+    isAlias: true,
+  },
+  {
+    handle: "rochii-backless",
+    canonicalHandle: "backless-dresses",
+    isAlias: true,
+  },
+  {
+    handle: "rochii-sparkle",
+    canonicalHandle: "sparkle-dresses",
+    isAlias: true,
+  },
+  {
+    handle: "rochii-occasion",
+    canonicalHandle: "occasion-dresses",
+    isAlias: true,
+  },
+  {
+    handle: "genti-din-piele-naturala",
+    canonicalHandle: "posete-din-piele-naturala",
+    isAlias: true,
   },
 ];
+
+const canonicalCollections = collections.filter((collection) => !collection.isAlias);
+
+const resolveCollection = (collection) => {
+  if (!collection?.isAlias) return collection;
+  return collections.find((item) => item.handle === collection.canonicalHandle);
+};
+
+const productMatchesCollection = (product, collection) => {
+  const resolvedCollection = resolveCollection(collection);
+  return Boolean(resolvedCollection?.match?.(product));
+};
+
+products.forEach((product) => {
+  product.collections = canonicalCollections
+    .filter((collection) => productMatchesCollection(product, collection))
+    .map((collection) => collection.handle);
+});
+
+export const productTags = [
+  { value: "All", label: "Toate" },
+  ...[...new Set(products.map((product) => product.tag))]
+    .sort()
+    .map((tag) => ({
+      value: tag,
+      label:
+        {
+          Bags: "Genti",
+          Belts: "Curele",
+          Clothing: "Imbracaminte",
+          "Co-Ords": "Coordonate",
+          Dresses: "Rochii",
+          Jumpsuits: "Salopete",
+          Skirts: "Fuste",
+          Tops: "Tops",
+          Trousers: "Pantaloni",
+        }[tag] || tag,
+    })),
+];
+
+export const productColors = [...new Map(
+  products.map((product) => [product.color, { name: product.color, hex: product.colorHex }])
+).values()].sort((a, b) => a.name.localeCompare(b.name));
+
+export const getProductBySlug = (slug) =>
+  products.find((product) => product.slug === decodeURIComponent(slug));
+
+export const getCollectionByHandle = (handle) => {
+  const collection = collections.find((item) => item.handle === handle);
+  const resolvedCollection = resolveCollection(collection);
+
+  if (!collection || !resolvedCollection) return undefined;
+
+  return {
+    ...resolvedCollection,
+    handle: collection.handle,
+    canonicalHandle: resolvedCollection.handle,
+    isAlias: collection.isAlias,
+  };
+};
+
+export const getProductsByCollection = (handle) => {
+  const collection = collections.find((item) => item.handle === handle);
+  if (!collection) return [];
+
+  return products.filter((product) => productMatchesCollection(product, collection));
+};

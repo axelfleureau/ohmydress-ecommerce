@@ -1,0 +1,37 @@
+{
+  "$schema": "node_modules/wrangler/config-schema.json",
+  "name": "ohmydress-ecommerce",
+  "main": ".open-next/worker.js",
+  "workers_dev": true,
+  "preview_urls": true,
+  "compatibility_date": "2026-06-03",
+  "compatibility_flags": [
+    "nodejs_compat",
+    "global_fetch_strictly_public"
+  ],
+  "assets": {
+    "directory": ".open-next/assets",
+    "binding": "ASSETS"
+  },
+  "services": [
+    {
+      "binding": "WORKER_SELF_REFERENCE",
+      "service": "ohmydress-ecommerce"
+    }
+  ],
+  "d1_databases": [
+    {
+      "binding": "DB",
+      "database_name": "ohmydress-ecommerce",
+      "database_id": "ed6317a1-7af9-445a-b993-7cd3195c8947",
+      "migrations_dir": "migrations"
+    }
+  ],
+  "vars": {
+    "NEXT_PUBLIC_SITE_URL": "https://ohmydress.ro",
+    "NEXT_PUBLIC_SAMEDAY_COUNTRY_CODE": "RO",
+    "NEXT_PUBLIC_SAMEDAY_LANG_CODE": "ro",
+    "ENVIRONMENT": "production",
+    "ADMIN_USERNAME": "admin"
+  }
+}

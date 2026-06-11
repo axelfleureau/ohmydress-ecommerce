@@ -1,10 +1,12 @@
 "use client";
 import "./Menu.css";
 import Link from "next/link";
+import { usePathname } from "next/navigation";
 import { useRef, useState, useEffect } from "react";
 
 import gsap from "gsap";
 import { SplitText } from "gsap/SplitText";
+import { getPathLocale, localizePath, stripLocalePrefix, ui } from "@/lib/i18n";
 
 gsap.registerPlugin(SplitText);
 
@@ -13,6 +15,16 @@ const Menu = () => {
   const [isAnimating, setIsAnimating] = useState(false);
   const [isMenuVisible, setIsMenuVisible] = useState(true);
   const [isMobile, setIsMobile] = useState(false);
+  const pathname = usePathname();
+  const locale = getPathLocale(pathname);
+  const copy = ui(locale);
+  const href = (path) => localizePath(path, locale);
+  const isAdminPath = pathname.startsWith("/admin");
+  const languageHref = isAdminPath
+    ? "/"
+    : locale === "en"
+      ? stripLocalePrefix(pathname)
+      : localizePath(pathname, "en");
 
   const menuRef = useRef(null);
   const menuOverlayRef = useRef(null);
@@ -290,67 +302,98 @@ const Menu = () => {
             </div>
             <div className="menu-main-links">
               <Link
-                href="/"
+                href={href("/")}
                 className="menu-main-link"
                 onClick={handleLinkClick}
               >
-                <h4>Home</h4>
+                <h4>{copy.home}</h4>
               </Link>
               <Link
-                href="/wardrobe"
+                href={href("/collections/new-in")}
                 className="menu-main-link"
                 onClick={handleLinkClick}
               >
-                <h4>Dresses & Bags</h4>
+                <h4>New In</h4>
               </Link>
               <Link
-                href="/genesis"
+                href={href("/collections/dresses")}
                 className="menu-main-link"
                 onClick={handleLinkClick}
               >
-                <h4>Our Story</h4>
+                <h4>{copy.dresses}</h4>
+              </Link>
+              <Link
+                href={href("/collections/clothing")}
+                className="menu-main-link"
+                onClick={handleLinkClick}
+              >
+                <h4>{copy.clothing}</h4>
+              </Link>
+              <Link
+                href={href("/collections/accessories")}
+                className="menu-main-link"
+                onClick={handleLinkClick}
+              >
+                <h4>{copy.accessories}</h4>
               </Link>
             </div>
           </div>
           <div className="menu-overlay-col menu-overlay-col-lg">
             <div className="menu-overlay-sub-col">
               <div className="menu-items-header">
-                <p>Discover</p>
+                <p>{copy.shopByLength}</p>
               </div>
               <div className="menu-sub-links">
-                <Link href="/lookbook" onClick={handleLinkClick}>
-                  Lookbook
+                <Link href={href("/collections/mini-dresses")} onClick={handleLinkClick}>
+                  {copy.miniDresses}
                 </Link>
-                <Link href="/touchpoint" onClick={handleLinkClick}>
-                  Contact
+                <Link href={href("/collections/midi-dresses")} onClick={handleLinkClick}>
+                  {copy.midiDresses}
                 </Link>
-                <Link href="/unit" onClick={handleLinkClick}>
-                  Featured Piece
+                <Link href={href("/collections/long-dresses")} onClick={handleLinkClick}>
+                  {copy.longDresses}
+                </Link>
+                <Link href={href("/collections/long-sleeve-dresses")} onClick={handleLinkClick}>
+                  {copy.longSleeveDresses}
                 </Link>
               </div>
             </div>
             <div className="menu-overlay-sub-col">
               <div className="menu-items-header">
-                <p>New In</p>
+                <p>{copy.shopByStyle}</p>
               </div>
               <div className="menu-sub-links menu-product-links">
-                <Link href="/unit" onClick={handleLinkClick}>
-                  01. Halter Neck Ruched Red Gown
+                <Link href={href("/collections/backless-dresses")} onClick={handleLinkClick}>
+                  {copy.backlessDresses}
                 </Link>
-                <Link href="/unit" onClick={handleLinkClick}>
-                  02. Velvet Plunge Dress
+                <Link href={href("/collections/sparkle-dresses")} onClick={handleLinkClick}>
+                  {copy.sparkleDresses}
                 </Link>
-                <Link href="/unit" onClick={handleLinkClick}>
-                  03. Amelia Bag — Burgundy
+                <Link href={href("/collections/occasion-dresses")} onClick={handleLinkClick}>
+                  {copy.occasionDresses}
                 </Link>
-                <Link href="/unit" onClick={handleLinkClick}>
-                  04. Ivory Muse Mini Dress
+                <Link href={href("/collections/tops")} onClick={handleLinkClick}>
+                  Tops
+                </Link>
+                <Link href={href("/collections/co-ords")} onClick={handleLinkClick}>
+                  {copy.coOrds}
+                </Link>
+                <Link href={href("/collections/posete-din-piele-naturala")} onClick={handleLinkClick}>
+                  {copy.leatherBags}
+                </Link>
+                <Link href={href("/collections/curele")} onClick={handleLinkClick}>
+                  {copy.belts}
                 </Link>
               </div>
             </div>
           </div>
         </div>
         <div className="menu-overlay-footer">
+          <div className="menu-social">
+            <Link href={languageHref} onClick={handleLinkClick}>
+              {locale === "en" ? "RO" : "EN"}
+            </Link>
+          </div>
           <div className="menu-social">
             <a
               href="https://www.instagram.com/ohmydress.store/"

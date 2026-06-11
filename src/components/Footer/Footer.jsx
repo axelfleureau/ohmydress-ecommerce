@@ -1,9 +1,17 @@
+"use client";
 import "./Footer.css";
 import Link from "next/link";
+import { usePathname } from "next/navigation";
 
 import ContactForm from "../ContactForm/ContactForm";
+import { getPathLocale, localizePath, ui } from "@/lib/i18n";
 
 const Footer = () => {
+  const pathname = usePathname();
+  const locale = getPathLocale(pathname);
+  const copy = ui(locale);
+  const href = (path) => localizePath(path, locale);
+
   return (
     <>
       <ContactForm />
@@ -16,11 +24,20 @@ const Footer = () => {
                 <p className="bodyCopy">Shop</p>
               </div>
               <div className="footer-col-links">
-                <Link href="/">Home</Link>
-                <Link href="/wardrobe">Dresses & Bags</Link>
-                <Link href="/genesis">Our Story</Link>
-                <Link href="/touchpoint">Contact</Link>
-                <Link href="/lookbook">Lookbook</Link>
+                <Link href={href("/")}>{copy.home}</Link>
+                <Link href={href("/collections/new-in")}>New In</Link>
+                <Link href={href("/collections/dresses")}>{copy.dresses}</Link>
+                <Link href={href("/collections/clothing")}>{copy.clothing}</Link>
+                <Link href={href("/collections/accessories")}>{copy.accessories}</Link>
+                <Link href={href("/collections/posete-din-piele-naturala")}>
+                  {copy.leatherBags}
+                </Link>
+                <Link href={href("/genesis")}>{copy.brandStory}</Link>
+                <Link href={href("/pages/about")}>About</Link>
+                <Link href={href("/pages/faq-s")}>FAQ</Link>
+                <Link href={href("/pages/contact")}>Contact</Link>
+                <Link href={href("/pages/privacy-policy")}>Privacy</Link>
+                <Link href={href("/pages/terms-conditions")}>Terms</Link>
               </div>
             </div>
             <div className="footer-col">
@@ -50,7 +67,7 @@ const Footer = () => {
               </div>
               <div className="footer-col-links">
                 <p>hello@ohmydress.ro</p>
-                <p>Bucharest, Romania</p>
+                <p>Bucuresti, Romania</p>
                 <p>Made in Italy</p>
               </div>
             </div>

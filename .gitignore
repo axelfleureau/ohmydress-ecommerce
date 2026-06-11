@@ -9,10 +9,17 @@ coverage
 # next.js build output
 .next
 out
+.open-next
+.wrangler
+cloudflare-env.d.ts
 
 # production
 build
 dist
+data/*.json
+artifacts/
+.medusa/
+apps/commerce/apps/backend/.medusa/
 
 # misc
 .DS_Store
@@ -25,6 +32,9 @@ yarn-error.log*
 
 # local env files
 .env*.local
+.env
+.dev.vars
+.dev.vars.local
 
 # vercel
 .vercel

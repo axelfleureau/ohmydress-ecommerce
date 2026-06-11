@@ -1,5 +1,5 @@
 import "./globals.css";
-import { Playfair_Display, Cormorant_Garamond } from "next/font/google";  c
+import { Playfair_Display, Cormorant_Garamond } from "next/font/google";
 
 import ClientLayout from "@/client-layout";
 
@@ -23,14 +23,36 @@ const cormorant = Cormorant_Garamond({
 });
 
 export const metadata = {
-  title: "OhMyDress | Dress it like you own it",
+  metadataBase: new URL(
+    process.env.NEXT_PUBLIC_SITE_URL || "https://ohmydress.ro"
+  ),
+  title: {
+    default: "OhMyDress | Rochii si accesorii in editie limitata",
+    template: "%s | OhMyDress",
+  },
   description:
-    "Limited-edition luxury dresses, gowns and Italian leather bags. Each drop is unique, designed to last a lifetime.",
+    "Rochii, tinute de ocazie si genti din piele italiana in editie limitata. Comanda online in Romania, in lei.",
+  alternates: {
+    canonical: "/",
+  },
+  openGraph: {
+    title: "OhMyDress",
+    description:
+      "Rochii, tinute de ocazie si genti din piele italiana in editie limitata.",
+    url: "/",
+    siteName: "OhMyDress",
+    locale: "ro_RO",
+    type: "website",
+  },
+  robots: {
+    index: true,
+    follow: true,
+  },
 };
 
 export default function RootLayout({ children }) {
   return (
-    <html lang="en">
+    <html lang="ro">
       <body
         className={`${playfair.variable} ${cormorant.variable}`}
       >

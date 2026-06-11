@@ -1,9 +1,18 @@
 "use client";
 import "./ShoppingCart.css";
 import { useState, useEffect } from "react";
+import Link from "next/link";
+import { usePathname } from "next/navigation";
 
 import { products } from "@/app/wardrobe/products";
-import { useCartStore, useCartCount, useCartSubtotal } from "@/store/cartStore";
+import useCartSync from "@/hooks/useCartSync";
+import { getPathLocale, localizePath, ui } from "@/lib/i18n";
+import {
+  getCartItemKey,
+  useCartStore,
+  useCartCount,
+  useCartSubtotal,
+} from "@/store/cartStore";
 
 const ShoppingCart = () => {
   const [isOpen, setIsOpen] = useState(false);
@@ -11,6 +20,10 @@ const ShoppingCart = () => {
   const removeFromCart = useCartStore((state) => state.removeFromCart);
   const cartCount = useCartCount();
   const subtotal = useCartSubtotal();
+  const pathname = usePathname();
+  const locale = getPathLocale(pathname);
+  const copy = ui(locale);
+  useCartSync();
 
   const toggleCart = () => {
     setIsOpen(!isOpen);
@@ -30,7 +43,7 @@ const ShoppingCart = () => {
   return (
     <div className="shopping-cart-container">
       <button className="cart-button" onClick={toggleCart}>
-        <span className="cart-icon">Bag</span>
+        <span className="cart-icon">{copy.cart}</span>
         {cartCount > 0 && <span className="cart-count">{cartCount}</span>}
       </button>
 
@@ -52,9 +65,9 @@ const ShoppingCart = () => {
       >
         <div className="cart-sidebar-content">
           <div className="cart-header">
-            <h2>Bag</h2>
+            <h2>{copy.cart}</h2>
             <button className="cart-close" onClick={toggleCart}>
-              Close
+              {copy.close}
             </button>
           </div>
           <div
@@ -68,7 +81,7 @@ const ShoppingCart = () => {
           >
             {cartItems.length === 0 ? (
               <div className="cart-empty">
-                <p>Your bag is empty</p>
+                <p>{copy.emptyCart}</p>
               </div>
             ) : (
               cartItems.map((item, index) => {
@@ -82,8 +95,9 @@ const ShoppingCart = () => {
                   matchingProduct?.image ||
                   `/products/product_${productIndex}.png`;
                 const quantity = Number(item.quantity) || 1;
+                const productKey = getCartItemKey(item);
                 return (
-                  <div key={`${item.name}-${index}`} className="cart-item">
+                  <div key={`${productKey}-${index}`} className="cart-item">
                     <div className="cart-item-image">
                       <img src={imgSrc} alt={item.name} />
                     </div>
@@ -94,12 +108,15 @@ const ShoppingCart = () => {
                           <span className="cart-item-quantity">{quantity}</span>
                         )}
                       </div>
+                      {item.size && (
+                        <p className="cart-item-size">{copy.size}: {item.size}</p>
+                      )}
                       <p className="cart-item-price">{item.price} lei</p>
                       <button
                         className="cart-item-remove"
-                        onClick={() => removeFromCart(item.name)}
+                        onClick={() => removeFromCart(productKey)}
                       >
-                        Remove
+                        {copy.remove}
                       </button>
                     </div>
                   </div>
@@ -110,10 +127,16 @@ const ShoppingCart = () => {
           {cartItems.length > 0 && (
             <div className="cart-footer">
               <div className="cart-summary-row">
-                <span>Total</span>
+                <span>{copy.total}</span>
                 <span>{subtotal.toFixed(2)} lei</span>
               </div>
-              <button className="cart-checkout">Checkout</button>
+              <Link
+                className="cart-checkout"
+                href={localizePath("/checkout", locale)}
+                onClick={toggleCart}
+              >
+                {copy.checkout}
+              </Link>
             </div>
           )}
         </div>

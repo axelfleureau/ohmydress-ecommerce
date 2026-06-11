@@ -20,6 +20,8 @@ export const Shader = forwardRef(function Shader(props, ref) {
     uniforms = {},
     textures = [],
     maxFps = 60,
+    maxPixelRatio = 1.25,
+    freezeAfter = null,
     initialState = "playing",
   } = props;
 
@@ -51,7 +53,10 @@ export const Shader = forwardRef(function Shader(props, ref) {
 
     const offscreenCanvas = document.createElement("canvas");
 
-    const pixelRatio = Math.max(1, Math.min(window.devicePixelRatio ?? 1, 2));
+    const pixelRatio = Math.max(
+      1,
+      Math.min(window.devicePixelRatio ?? 1, maxPixelRatio)
+    );
 
     const updateCanvasSize = () => {
       canvas.width = offscreenCanvas.width = canvas.offsetWidth * pixelRatio;
@@ -177,6 +182,11 @@ export const Shader = forwardRef(function Shader(props, ref) {
       ctx.clearRect(0, 0, canvas.width, canvas.height);
       ctx.drawImage(offscreenCanvas, 0, 0);
 
+      if (freezeAfter && timeRef.current >= freezeAfter) {
+        playStateRef.current = "paused";
+        return;
+      }
+
       animationFrameIdRef.current = requestAnimationFrame(animate);
     }
 
@@ -206,7 +216,7 @@ export const Shader = forwardRef(function Shader(props, ref) {
         gl.deleteBuffer(buffer);
       }
     };
-  }, [source, uniforms, maxFps]);
+  }, [source, uniforms, maxFps, maxPixelRatio, freezeAfter]);
 
   return <canvas ref={canvasRef} aria-hidden="true" />;
 });
@@ -219,6 +229,9 @@ export const DottedShader = forwardRef(function DottedShader(
     dotSize,
     shader,
     center,
+    maxFps = 30,
+    freezeAfter = null,
+    maxPixelRatio = 1.25,
   },
   ref
 ) {
@@ -300,6 +313,13 @@ export const DottedShader = forwardRef(function DottedShader(
   }, [opacities.length, processedColors.length, center, shader]);
 
   return (
-    <Shader ref={ref} source={shaderSource} uniforms={uniforms} maxFps={60} />
+    <Shader
+      ref={ref}
+      source={shaderSource}
+      uniforms={uniforms}
+      maxFps={maxFps}
+      freezeAfter={freezeAfter}
+      maxPixelRatio={maxPixelRatio}
+    />
   );
 });

@@ -3,6 +3,8 @@
   width: 100%;
   height: 100svh;
   overflow: hidden;
+  background-color: var(--base-100);
+  contain: layout paint;
 }
 
 .hero .hero-header {
@@ -19,7 +21,7 @@
 }
 
 .hero .hero-title {
-  font-size: clamp(6rem, 18vw, 22rem);
+  font-size: 13rem;
   line-height: 0.9;
   color: var(--base-700);
   display: flex;
@@ -34,7 +36,7 @@
   font-style: normal;
   font-weight: 900;
   text-transform: uppercase;
-  letter-spacing: -0.04em;
+  letter-spacing: 0;
   display: block;
 }
 
@@ -43,7 +45,7 @@
   font-style: italic;
   font-weight: 300;
   text-transform: none;
-  letter-spacing: 0.02em;
+  letter-spacing: 0;
   font-size: 0.32em;
   color: var(--base-500);
   display: block;
@@ -59,6 +61,7 @@
   max-width: 700px;
   height: 68svh;
   will-change: opacity, transform;
+  contain: layout paint;
 }
 
 .hero .hero-img img {
@@ -67,6 +70,7 @@
   object-fit: contain;
   object-position: center bottom;
   display: block;
+  backface-visibility: hidden;
 }
 
 .about {
@@ -76,6 +80,17 @@
   background-color: var(--base-700);
   color: var(--base-100);
   padding: 8rem 0;
+}
+
+.about,
+.featured-products,
+.silhouette-feature,
+.marquee-banner,
+.text-block,
+.peel-reveal,
+.cta {
+  content-visibility: auto;
+  contain-intrinsic-size: 900px;
 }
 
 .about .container {
@@ -291,7 +306,7 @@
   }
 
   .hero .hero-title {
-    font-size: clamp(4rem, 14vw, 10rem);
+    font-size: 7rem;
   }
 
   .hero .hero-img {
@@ -321,6 +336,10 @@
 @media (max-width: 600px) {
   .hero .hero-header {
     top: 11svh;
+  }
+
+  .hero .hero-title {
+    font-size: 4.4rem;
   }
 
   .hero .hero-img {

@@ -22,6 +22,8 @@ const DotMatrix = ({
   dotSize = 2,
   spacing = 5,
   opacity = 0.85,
+  maxFps = 30,
+  freezeAfter = 2.5,
 }) => {
   const rgbColor = useMemo(() => hexToRgb(color), [color]);
 
@@ -57,6 +59,8 @@ const DotMatrix = ({
         dotSize={dotSize}
         center={["x"]}
         shader={shaderCode}
+        maxFps={maxFps}
+        freezeAfter={freezeAfter}
       />
     </div>
   );
